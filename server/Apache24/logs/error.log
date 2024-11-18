@@ -1,0 +1,148 @@
+[Fri Nov 15 15:48:21.690023 2024] [mpm_winnt:notice] [pid 10340:tid 412] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 15:48:21.691023 2024] [mpm_winnt:notice] [pid 10340:tid 412] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 15:48:21.691023 2024] [core:notice] [pid 10340:tid 412] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 15:48:21.697377 2024] [mpm_winnt:notice] [pid 10340:tid 412] AH00418: Parent: Created child process 15792
+Apache server shutdown initiated...
+pm_winnt:notice] [pid 15792:tid 444] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 15:48:36.642420 2024] [mpm_winnt:notice] [pid 10340:tid 412] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Fri Nov 15 15:48:38.673015 2024] [mpm_winnt:notice] [pid 15792:tid 444] AH00364: Child: All worker threads have exited.
+[Fri Nov 15 15:48:38.698903 2024] [mpm_winnt:notice] [pid 10340:tid 412] AH00430: Parent: Child process 15792 exited successfully.
+[Fri Nov 15 15:50:03.732805 2024] [mpm_winnt:notice] [pid 18084:tid 372] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 15:50:03.732805 2024] [mpm_winnt:notice] [pid 18084:tid 372] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 15:50:03.732805 2024] [core:notice] [pid 18084:tid 372] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 15:50:03.738819 2024] [mpm_winnt:notice] [pid 18084:tid 372] AH00418: Parent: Created child process 1236
+[Fri Nov 15 15:50:04.145990 2024] [mpm_winnt:notice] [pid 1236:tid 432] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 16:17:44.405992 2024] [core:warn] [pid 6096:tid 372] AH00098: pid file C:/server/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Nov 15 16:17:44.408675 2024] [mpm_winnt:notice] [pid 6096:tid 372] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 16:17:44.408675 2024] [mpm_winnt:notice] [pid 6096:tid 372] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 16:17:44.408675 2024] [core:notice] [pid 6096:tid 372] AH00094: Command line: 'httpd -d C:/server/Apache24'
+[Fri Nov 15 16:17:44.413675 2024] [mpm_winnt:notice] [pid 6096:tid 372] AH00418: Parent: Created child process 4184
+[Fri Nov 15 16:17:45.478181 2024] [mpm_winnt:notice] [pid 4184:tid 368] AH00354: Child: Starting 64 worker threads.
+Starting the 'Apache2.4' service
+The 'Apache2.4' service is running.
+ly determine the server's fully qualified domain name, using fe80::7adf:6709:4847:ee79. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 15 16:25:44.405982 2024] [core:warn] [pid 11520:tid 376] AH00098: pid file C:/server/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Nov 15 16:25:44.407982 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 16:25:44.407982 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 16:25:44.407982 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 16:25:44.414981 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 16340
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::7adf:6709:4847:ee79. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::7adf:6709:4847:ee79. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 15 16:25:45.625697 2024] [mpm_winnt:notice] [pid 16340:tid 388] AH00354: Child: Starting 64 worker threads.
+Starting the 'Apache2.4' service
+AH00377: The 'Apache2.4' service is already started!
+[Fri Nov 15 16:38:23.612611 2024] [mpm_winnt:crit] [pid 4184:tid 368] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Fri Nov 15 16:38:23.612611 2024] [mpm_winnt:warn] [pid 4184:tid 1060] (OS 995)스레드 종료 또는 응용 프로그램 요청 때문에 I/O 작업이 취소되었습니다.  : AH00341: winnt_accept: Asynchronous AcceptEx failed.
+[Fri Nov 15 16:38:23.612611 2024] [mpm_winnt:warn] [pid 4184:tid 1020] (OS 995)스레드 종료 또는 응용 프로그램 요청 때문에 I/O 작업이 취소되었습니다.  : AH00341: winnt_accept: Asynchronous AcceptEx failed.
+[Fri Nov 15 16:38:25.642360 2024] [mpm_winnt:notice] [pid 4184:tid 368] AH00364: Child: All worker threads have exited.
+Starting the 'Apache2.4' service
+AH00377: The 'Apache2.4' service is already started!
+[Fri Nov 15 16:47:14.930095 2024] [core:warn] [pid 15036:tid 368] AH00098: pid file C:/server/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Nov 15 16:47:14.932118 2024] [mpm_winnt:notice] [pid 15036:tid 368] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 16:47:14.932118 2024] [mpm_winnt:notice] [pid 15036:tid 368] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 16:47:14.932118 2024] [core:notice] [pid 15036:tid 368] AH00094: Command line: 'httpd -d C:/server/Apache24'
+[Fri Nov 15 16:47:14.937118 2024] [mpm_winnt:notice] [pid 15036:tid 368] AH00418: Parent: Created child process 17076
+Apache server interrupted...
+024] [mpm_winnt:notice] [pid 17076:tid 372] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 16:47:29.292348 2024] [mpm_winnt:notice] [pid 15036:tid 368] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+Apache server interrupted...
+Apache server interrupted...
+Apache server interrupted...
+[Fri Nov 15 16:47:31.297899 2024] [mpm_winnt:notice] [pid 17076:tid 372] AH00364: Child: All worker threads have exited.
+[Fri Nov 15 16:47:31.320494 2024] [mpm_winnt:notice] [pid 15036:tid 368] AH00430: Parent: Child process 17076 exited successfully.
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+[Fri Nov 15 20:52:41.342164 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) configured -- resuming normal operations
+[Fri Nov 15 20:52:41.342164 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 20:52:41.342164 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 20:52:41.354060 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 24904
+[Fri Nov 15 20:52:43.268563 2024] [mpm_winnt:notice] [pid 24904:tid 460] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 20:52:43.294620 2024] [mpm_winnt:notice] [pid 16340:tid 388] AH00364: Child: All worker threads have exited.
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+[Fri Nov 15 21:13:01.931774 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Fri Nov 15 21:13:01.931774 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 21:13:01.931774 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 21:13:01.941672 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 18416
+[Fri Nov 15 21:13:03.577388 2024] [mpm_winnt:notice] [pid 18416:tid 220] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 21:13:03.786980 2024] [mpm_winnt:notice] [pid 24904:tid 460] AH00364: Child: All worker threads have exited.
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+[Fri Nov 15 21:54:05.691005 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Fri Nov 15 21:54:05.691005 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Fri Nov 15 21:54:05.691005 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Fri Nov 15 21:54:05.701549 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 24032
+[Fri Nov 15 21:54:06.755730 2024] [mpm_winnt:notice] [pid 24032:tid 204] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 15 21:54:07.624611 2024] [mpm_winnt:notice] [pid 18416:tid 220] AH00364: Child: All worker threads have exited.
+[Fri Nov 15 21:55:10.100042 2024] [php:error] [pid 24032:tid 1132] [client ::1:54390] script 'C:/server/Apache24/htdocs/phpinfo.php' not found or unable to stat
+[Fri Nov 15 22:21:59.008067 2024] [php:error] [pid 24032:tid 1132] [client ::1:54603] script 'C:/server/Apache24/htdocs/movie-rating-website/register_action.php' not found or unable to stat, referer: http://localhost/movie-rating-website/register.php
+[Fri Nov 15 22:22:02.479726 2024] [php:error] [pid 24032:tid 1132] [client ::1:54603] script 'C:/server/Apache24/htdocs/movie-rating-website/register_action.php' not found or unable to stat, referer: http://localhost/movie-rating-website/register.php
+[Fri Nov 15 22:27:36.169066 2024] [php:error] [pid 24032:tid 1140] [client ::1:54651] script 'C:/server/Apache24/htdocs/movie-rating-website/register_process.php' not found or unable to stat, referer: http://localhost/movie-rating-website/register.php
+[Fri Nov 15 23:24:35.520809 2024] [php:error] [pid 24032:tid 1140] [client ::1:55870] script 'C:/server/Apache24/htdocs/connection_test.php' not found or unable to stat
+[Sun Nov 17 16:29:28.706537 2024] [php:error] [pid 24032:tid 600] [client ::1:21621] script 'C:/server/Apache24/htdocs/connection_test.php' not found or unable to stat
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+[Sun Nov 17 16:45:44.290287 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Sun Nov 17 16:45:44.290287 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Sun Nov 17 16:45:44.291296 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Sun Nov 17 16:45:44.304763 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 27168
+[Sun Nov 17 16:45:45.182507 2024] [mpm_winnt:notice] [pid 27168:tid 380] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 17 16:45:46.193830 2024] [mpm_winnt:notice] [pid 24032:tid 204] AH00364: Child: All worker threads have exited.
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: C:\\php\\ext\\mysqli (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4), C:\\php\\ext\\php_mysqli.dll (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4)) in Unknown on line 0
+[Sun Nov 17 17:04:17.555787 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Sun Nov 17 17:04:17.555787 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Sun Nov 17 17:04:17.555787 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Sun Nov 17 17:04:17.570785 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 26320
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: C:\\php\\ext\\mysqli (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4), C:\\php\\ext\\php_mysqli.dll (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4)) in Unknown on line 0
+[Sun Nov 17 17:04:18.453991 2024] [mpm_winnt:notice] [pid 26320:tid 368] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 17 17:04:19.469134 2024] [mpm_winnt:notice] [pid 27168:tid 380] AH00364: Child: All worker threads have exited.
+[Sun Nov 17 17:08:11.457829 2024] [php:error] [pid 26320:tid 1204] [client ::1:21982] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in C:\\server\\Apache24\\htdocs\\movie-rating-website\\config\\db.php:9\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\connection_test.php(2): require_once()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\config\\db.php on line 9
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: C:\\php\\ext\\mysqli (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4), C:\\php\\ext\\php_mysqli.dll (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4)) in Unknown on line 0
+[Sun Nov 17 17:09:20.161941 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Sun Nov 17 17:09:20.161941 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Sun Nov 17 17:09:20.161941 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Sun Nov 17 17:09:20.174940 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 1120
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: C:\\php\\ext\\mysqli (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4), C:\\php\\ext\\php_mysqli.dll (\xec\xa7\x80\xec\xa0\x95\xeb\x90\x9c \xeb\xaa\xa8\xeb\x93\x88\xec\x9d\x84 \xec\xb0\xbe\xec\x9d\x84 \xec\x88\x98 \xec\x97\x86\xec\x8a\xb5\xeb\x8b\x88\xeb\x8b\xa4)) in Unknown on line 0
+[Sun Nov 17 17:09:21.077474 2024] [mpm_winnt:notice] [pid 1120:tid 404] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 17 17:09:22.090984 2024] [mpm_winnt:notice] [pid 26320:tid 368] AH00364: Child: All worker threads have exited.
+[Sun Nov 17 17:09:23.864594 2024] [php:error] [pid 1120:tid 1208] [client ::1:21986] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in C:\\server\\Apache24\\htdocs\\movie-rating-website\\config\\db.php:9\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\connection_test.php(2): require_once()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\config\\db.php on line 9
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 11520:tid 376] AH00424: Parent: Received restart signal -- Restarting the server.
+[Sun Nov 17 17:15:47.680038 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Sun Nov 17 17:15:47.680038 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Sun Nov 17 17:15:47.680038 2024] [core:notice] [pid 11520:tid 376] AH00094: Command line: 'C:\\server\\Apache24\\bin\\httpd.exe -d C:/server/Apache24'
+[Sun Nov 17 17:15:47.690062 2024] [mpm_winnt:notice] [pid 11520:tid 376] AH00418: Parent: Created child process 9352
+[Sun Nov 17 17:15:48.598687 2024] [mpm_winnt:notice] [pid 9352:tid 176] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 17 17:15:49.599201 2024] [mpm_winnt:notice] [pid 1120:tid 404] AH00364: Child: All worker threads have exited.
+[Sun Nov 17 17:16:16.789156 2024] [php:error] [pid 9352:tid 1176] [client ::1:22031] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'username'@'localhost' (using password: YES) in C:\\server\\Apache24\\htdocs\\movie-rating-website\\connection_test.php:2\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\connection_test.php(2): mysqli->__construct('localhost', 'username', Object(SensitiveParameterValue), 'database')\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\connection_test.php on line 2
+[Sun Nov 17 18:38:54.547376 2024] [php:warn] [pid 9352:tid 1180] [client ::1:22798] PHP Warning:  Undefined variable $check in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 33, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 18:39:20.241051 2024] [php:error] [pid 9352:tid 1176] [client ::1:22799] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 18:39:24.738573 2024] [php:error] [pid 9352:tid 1176] [client ::1:22799] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 18:42:14.120376 2024] [php:error] [pid 9352:tid 1180] [client ::1:22821] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 18:43:25.380983 2024] [php:error] [pid 9352:tid 1176] [client ::1:22824] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 18:45:17.840340 2024] [php:error] [pid 9352:tid 1180] [client ::1:22834] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test@test.com' for key 'users.email' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 19:12:30.236176 2024] [php:error] [pid 9352:tid 1180] [client ::1:7188] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Sun Nov 17 19:12:46.188418 2024] [php:error] [pid 9352:tid 1176] [client ::1:7189] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:24:20.569793 2024] [php:error] [pid 9352:tid 1176] [client ::1:15374] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'identifNum' at row 1 in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:24:48.202090 2024] [php:error] [pid 9352:tid 1180] [client ::1:15375] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test@test.com' for key 'users.email' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:25:39.305260 2024] [php:error] [pid 9352:tid 1180] [client ::1:15403] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry ''' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:26:00.265122 2024] [php:error] [pid 9352:tid 1176] [client ::1:15429] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry ''' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:27:12.772991 2024] [php:error] [pid 9352:tid 1180] [client 127.0.0.1:15548] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry ''' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 13:29:34.276792 2024] [php:error] [pid 9352:tid 1180] [client ::1:5313] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry ''' for key 'users.userID' in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php:32\nStack trace:\n#0 C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php(32): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\server\\Apache24\\htdocs\\movie-rating-website\\register_process.php on line 32, referer: http://localhost/movie-rating-website/register.php
+[Mon Nov 18 15:50:42.396726 2024] [mpm_winnt:notice] [pid 21660:tid 380] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Mon Nov 18 15:50:42.397540 2024] [mpm_winnt:notice] [pid 21660:tid 380] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Mon Nov 18 15:50:42.397540 2024] [core:notice] [pid 21660:tid 380] AH00094: Command line: 'httpd -d C:/movie_rating_website/server/Apache24'
+[Mon Nov 18 15:50:42.401547 2024] [mpm_winnt:notice] [pid 21660:tid 380] AH00418: Parent: Created child process 1824
+[Mon Nov 18 15:50:42.828606 2024] [mpm_winnt:notice] [pid 1824:tid 372] AH00354: Child: Starting 64 worker threads.
+[Mon Nov 18 15:57:41.404178 2024] [php:error] [pid 1824:tid 1116] [client ::1:42703] script 'C:/movie_rating_website/server/Apache24/htdocs/index.php' not found or unable to stat
