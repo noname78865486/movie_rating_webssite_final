@@ -1,46 +1,54 @@
 <?php
-require_once 'config/db.php'; // DB ¿¬°á ÆÄÀÏ
+require_once 'config/db.php'; // DB ì—°ê²°
 
-// DB¿¡ È¸¿ø°¡ÀÔ Á¤º¸ µî·Ï
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // »ç¿ëÀÚ ÀÔ·Â °ª °¡Á®¿À±â
-    $name = $_POST['username'];
+    $name = $_POST['name'];
     $userID = $_POST['userID'];
     $email = $_POST['email'];
-    $identifNum = $_POST['identifNum'];
+    $identifNum = $_POST['identifNum1'] . '-' . $_POST['identifNum2'];
     $address = $_POST['address'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $password = $_POST['password'];
-    $passwordCheck = $_POST['passwordCheck'];
+    $phoneNumber = $_POST['phoneNumber1'] . '-' . $_POST['phoneNumber2'] . '-' . $_POST['phoneNumber3'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // ºñ¹Ğ¹øÈ£¿Í ºñ¹Ğ¹øÈ£ È®ÀÎ °ª ºñ±³
-    if ($password !== $passwordCheck) {
-        die("ºñ¹Ğ¹øÈ£¿Í ºñ¹Ğ¹øÈ£ È®ÀÎ °ªÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
-    }
-
-    // ºñ¹Ğ¹øÈ£ ¾ÏÈ£È­
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // µ¥ÀÌÅÍº£ÀÌ½º ³» users Å×ÀÌºí¿¡ ÀúÀåÇÒ SQL Äõ¸®
-    $sql = "INSERT INTO users (name, userID, email, identifNum, address, phoneNumber, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    // ì¤‘ë³µ í™•ì¸ (ID, Email, ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸, ì—°ë½ì²˜)
+    $sql = "SELECT 1 FROM users WHERE userID = ? OR email = ? OR identifNum = ? OR phoneNumber = ?";
     $stmt = $conn->prepare($sql);
-    
-    // ÇÃ·¹ÀÌ½ºÈ¦´õ¿¡ µ¥ÀÌÅÍ ¹ÙÀÎµù
-    $stmt->bind_param("sssssss", $name, $userID, $email, $identifNum, $address, $phoneNumber, $hashedPassword);
+    $stmt->bind_param("ssss", $userID, $email, $identifNum, $phoneNumber);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // SQL ½ÇÇà ¹× ¼º°ø ¿©ºÎ È®ÀÎ
-    if ($stmt->execute()) {
-        echo "È¯¿µÇÕ´Ï´Ù. <b><i>$userID</i></b> ´Ô. È¸¿ø°¡ÀÔÀÌ ¼º°øÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù!";
-    } else {
-        echo "DB¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇÏ¼¼¿ä." . $stmt->error;
+    // ì¤‘ë³µ í•­ëª©ì— ë§ëŠ” ë©”ì‹œì§€ ì¶œë ¥
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        if ($row['userID'] == $userID) {
+            echo '<script>alert("ì´ë¯¸ ì‚¬ìš© ì¤‘ì¸ IDì…ë‹ˆë‹¤."); window.history.back();</script>';
+            exit;
+        } elseif ($row['email'] == $email) {
+            echo '<script>alert("ì´ë¯¸ ì‚¬ìš© ì¤‘ì¸ Emailì…ë‹ˆë‹¤."); window.history.back();</script>';
+            exit;
+        } elseif ($row['identifNum'] == $identifNum) {
+            echo '<script>alert("ì´ë¯¸ íšŒì›ê°€ì…í•œ íšŒì›ì˜ ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ì…ë‹ˆë‹¤."); window.history.back();</script>';
+            exit;
+        } elseif ($row['phoneNumber'] == $phoneNumber) {
+            echo '<script>alert("ì´ë¯¸ ì‚¬ìš© ì¤‘ì¸ ì—°ë½ì²˜ì…ë‹ˆë‹¤."); window.history.back();</script>';
+            exit;
+        }
     }
-    
-    // ÁØºñµÈ ±¸¹® ´İ±â
-    $stmt->close();
 
-    //µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ´İ±â
+    // ë°ì´í„° ì €ì¥
+    $sql = "INSERT INTO users (name, userID, email, identifNum, address, phoneNumber, password) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssss", $name, $userID, $email, $identifNum, $address, $phoneNumber, $password);
+
+    if ($stmt->execute()) {
+        echo '<script>alert("íšŒì›ê°€ì…ì´ ì„±ê³µì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤! ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”"); window.location.href = "login.php";</script>';
+    } else {
+        echo '<script>alert("íšŒì›ê°€ì… ì‹¤íŒ¨. ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”."); window.history.back();</script>';
+    }
+
+    $stmt->close();
     $conn->close();
-} else {
-    echo "Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.";
 }
 ?>
