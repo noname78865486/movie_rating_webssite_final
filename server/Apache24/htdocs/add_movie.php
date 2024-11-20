@@ -7,16 +7,7 @@
 <body>
     <h2>영화 등록</h2>
     <form action="add_movie_process.php" method="POST">
-        <label>영화 제목:</label>
-        <input type="text" name="title" required><br>
-
-        <label>감독:</label>
-        <input type="text" name="title" required><br>
-        
-        <label>개봉연도:</label>
-        <input type="text" name="title" required><br>
-       
-        <label>포스터:</label>
+    <label>포스터:</label>
         <input type="file" class="real-upload" accept="image/*" required multiple>
         <!--<script>
             function getImageFiles(e) {
@@ -50,9 +41,30 @@
             });
             }-->
 
-        <label>줄거리:</label>
+        <label>영화 제목:</label>
         <input type="text" name="title" required><br>
 
+        <label>감독:</label>
+        <input type="text" name="title" required><br>
+        
+        <label>개봉연도:</label>
+        <input type="text" name="title" required><br>
+
+        <label>장르:</label> 
+        <select name="genre" >
+            <option value="none"> 선택 </option>
+            <option value="action">액션</option>
+            <option value="comedy">코미디</option>
+            <option value="romance">로맨스</option>
+            <option value="thriler">스릴러</option>
+            <option value="animation">애니메이션</option>
+            <option value="drama">드라마</option>
+            <option value="SF">SF</option>
+            <option value="fantasy">판타지</option>
+            <option value="horror">공포</option>
+            <option value="documentary">다큐</option>
+            <option value="etc">기타<br>
+    
         <label>평점:</label>
         <input type="number" name="rating" min="0" max="10" step="0.5" required><br>
 
