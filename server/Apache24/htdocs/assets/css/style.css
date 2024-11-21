@@ -5,9 +5,9 @@ body {
     text-align: center;
 }
 h1, h2 {
-    color: #222222;
+    color: #fff;
 }
-form {
+form{
     margin: 20px auto;
     padding: 20px;
     width: 300px;
@@ -15,7 +15,16 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-select, input {
+table {
+    margin: 20px auto;
+    padding: 20px;
+    width: device-width;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input,select{
+    box-sizing: border-box;
     margin: 10px 0;
     padding: 10px;
     width: 90%;
@@ -65,3 +74,6 @@ h1 { margin-bottom: 10px;
     cursor: pointer;
 }
 #login_wrap .forgetpw a, #login_wrap .regist_btn a { color: red; }
+#regist_wrap #regist_form input#useridentify {
+    width: 155px;
+}

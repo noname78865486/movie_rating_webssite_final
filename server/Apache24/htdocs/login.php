@@ -57,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1 style="color:#222222">로그인</h1>
         <?php if (isset($error))echo "<p style='color: red;'>$error</p>";?>
         <form action="login.php" method="post">
-            <label for="userID">ID</label>
+            <label for="userID">ID</label><br>
             <input type="text" id="userID" name="userID" required placeholder=ID><br>
-
+            
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder=Password><br>
 

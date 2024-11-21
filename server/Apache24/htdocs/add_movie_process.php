@@ -1,22 +1,24 @@
 <?php
 // add_movie_process.php
-require_once 'config/db.php'; // DB ¿¬°á ÆÄÀÏ
+require_once 'config/db.php'; // DB ì—°ê²° íŒŒì¼
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $rating = $_POST['rating'];
 
-    // µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀå
+    // ë°ì´í„°ë² ì´ìŠ¤ì— ì €ìž¥
     $sql = "INSERT INTO movies (title, rating) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sd", $title, $rating);
 
     if ($stmt->execute()) {
-        echo "¿µÈ­°¡ µî·ÏµÇ¾ú½À´Ï´Ù.";
+        echo "ì˜í™”ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
+        header("Location: movie_add_success.php");
+        exit;
     } else {
-        echo "¿À·ù: " . $stmt->error;
+        echo "ì˜¤ë¥˜: " . $stmt->error;
     }
-
+    
     $stmt->close();
     $conn->close();
 }

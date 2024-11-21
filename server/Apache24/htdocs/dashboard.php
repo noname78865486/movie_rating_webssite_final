@@ -1,3 +1,4 @@
+<!--로그인한 유저만 볼 수 있는 index-->
 <?php
 session_start(); // 세션 시작
 
@@ -22,7 +23,7 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
         <h1 style="color:#fff"><?php echo htmlspecialchars($userID); ?>님!</h1>
         <a style="font-size:10px; color:white">______________________________</a>
         <p style="font-size: 15px;">
-            <a style="color: white; margin-bottom: 10px; display: block;" href="movie_list.php">⭐Rate Movies</a>
+            <a style="color: white; margin-bottom: 10px; display: block;" href="movie_list_user.php">⭐Rate Movies</a>
             <a style="color: white; margin-bottom: 10px; display: block;" href="add_movie.php">🆕Add a New Movie</a>
             <a style="color: white; display: block;" href="logout.php">🔓Logout</a>
         </p>

@@ -22,7 +22,7 @@
                 return; // 중복 체크 요청 중단
             }
 
-            // AJAX 요청 : 
+            // AJAX 요청
             fetch('check_userID.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -86,20 +86,20 @@
         <!-- ID -->
         <label>ID:</label>
         <input type="text" name="userID" required>
-        <button type="button" onclick="checkUserID()">ID 중복 여부 확인</button>
+        <button type="button" onclick="checkUserID()">ID 중복 여부 확인</button><br>
         <span id="id-check-message"></span>
         <br>
 
         <!-- Email -->
         <label>Email:</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" required placeholder="abc123@example.com">
         <br>
 
         <!-- 주민등록번호 -->
         <label>주민등록번호:</label>
-        <input type="text" name="identifNum1" maxlength="6" required>
+        <input type="text" name="identifNum1" maxlength="6" required placeholder="123456">
         <span>-</span>
-        <input type="password" name="identifNum2" maxlength="7" required>
+        <input type="password" name="identifNum2" maxlength="7" required placeholder="●●●●●●●">
         <br>
 
         <!-- 주소 -->
@@ -109,21 +109,21 @@
 
         <!-- 휴대폰 번호 -->
         <label>휴대폰번호:</label>
-        <input type="text" width=35% name="phoneNumber1" maxlength="3" required>
+        <input type="text" width=30px name="phoneNumber1" maxlength="3" required placeholder="010">
         <span>-</span>
-        <input type="text" width=35% name="phoneNumber2" maxlength="4" required>
+        <input type="text" width=30px name="phoneNumber2" maxlength="4" required placeholder="1234">
         <span>-</span>
-        <input type="text" width=35% name="phoneNumber3" maxlength="4" required>
+        <input type="text" width=30px name="phoneNumber3" maxlength="4" required placeholder="5678">
         <br>
 
         <!-- 비밀번호 -->
         <label>비밀번호:</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" required placeholder="영어, 특수문자, 숫자 포함 8자리 이상">
         <br>
 
         <!-- 비밀번호 확인 -->
         <label>비밀번호 확인:</label>
-        <input type="password" name="passwordCheck" required>
+        <input type="password" name="passwordCheck" required placeholder="비밀번호 확인">
         <br>
 
         <button type="submit">회원가입</button>

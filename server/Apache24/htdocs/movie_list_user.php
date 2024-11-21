@@ -24,8 +24,8 @@ $result = $conn->query($sql);
     <header>
         <h1>영화 목록</h1>
         <nav>
-            <a href="index.HTML">🏠Home</a>
-            <a href="#" onclick="alert('로그인한 회원만 가능한 기능입니다.'); return false;">➕영화 추가</a>
+            <a href="dashboard.php">🏠Home</a>
+            <a href="add_movie.php">➕영화 추가</a>
         </nav>
     </header>
 
