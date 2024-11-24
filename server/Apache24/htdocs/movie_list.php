@@ -10,7 +10,11 @@ require_once 'config/db.php';
 
 // 영화 목록과 평균 평점을 가져오는 SQL 쿼리
 $sql = "
-    SELECT m.id, m.title, m.director, m.release_date, m.genre,
+    SELECT m.id, 
+           COALESCE(m.title, '') AS title, 
+           COALESCE(m.director, '') AS director, 
+           COALESCE(m.release_date, '') AS release_date, 
+           COALESCE(m.genre, '') AS genre,
            COALESCE(AVG(r.rating), 0) AS avg_rating
     FROM movies m
     LEFT JOIN reviews r ON m.id = r.movie_id
@@ -28,13 +32,13 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 목록</title>
     <style>
-        table, tr {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
         table th, table td {
-            width: 100%;
+            width: 40px ;
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
