@@ -6,14 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Rating Website</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Flexbox를 사용한 수직 및 수평 중앙 정렬 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 화면 전체 높이를 채움 */
+            margin: 0; /* 기본 여백 제거 */
+            background-color: #333; /* 배경색 추가 */
+            font-family: Arial, sans-serif;
+        }
+
+        /* 텍스트 및 링크 스타일 */
+        h1 {
+            font-size: 50px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="font-size:50px; color:#fff">Welcome to<br>
-        🎞️ Movie Rating! 🍿<br></h1>
-        <a style="font-size:10px; color:#fff">______________________________</a>
-        <p style="font-size:20px"><a style="color:#fff" href="movie_list.php">Show Movie List📽️</a></p>
-        <p style="font-size:20px"><a style="color:#fff" href="login.php">login🔒</a></p>
-        <p style="font-size:20px"><a style="color:#fff" href="register.php">Sign in✒️</a></p>
-        <a style="font-size:10px; color:#fff">______________________________</a>
+    <div>
+        <h1>Welcome to<br>
+            🎞️ Movie Rating! 🍿<br>
+        </h1>
+        <hr style="width: 50%; margin: 10px auto; border: 1px solid #fff;">
+        <p><a href="movie_list.php">Show Movie List📽️</a></p>
+        <p><a href="reviews_board.php">Show reviews✨</a></p>
+        <p><a href="login.php">Login🔒</a></p>
+        <p><a href="register.php">Sign in✒️</a></p>
+        <hr style="width: 50%; margin: 10px auto; border: 1px solid #fff;">
+    </div>
 </body>
 </html>

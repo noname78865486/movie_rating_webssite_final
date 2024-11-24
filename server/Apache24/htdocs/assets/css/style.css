@@ -1,5 +1,14 @@
 /* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
 body {
+    height: 100%;
+    margin: 20px auto;
+    padding: 100px;
     font-family: sans-serif;
     background-color: #f4f4f4;
     text-align: center;
@@ -74,6 +83,3 @@ h1 { margin-bottom: 10px;
     cursor: pointer;
 }
 #login_wrap .forgetpw a, #login_wrap .regist_btn a { color: red; }
-#regist_wrap #regist_form input#useridentify {
-    width: 155px;
-}

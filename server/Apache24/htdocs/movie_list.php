@@ -7,8 +7,17 @@
 
 //DB 연결
 require_once 'config/db.php';
-// 영화 데이터를 데이터베이스에서 가져오는 SQL 쿼리
-$sql = "SELECT id, title, director, release_date, genre, rating FROM movies ORDER BY id DESC";
+
+// 영화 목록과 평균 평점을 가져오는 SQL 쿼리
+$sql = "
+    SELECT m.id, m.title, m.director, m.release_date, m.genre,
+           COALESCE(AVG(r.rating), 0) AS avg_rating
+    FROM movies m
+    LEFT JOIN reviews r ON m.id = r.movie_id
+    GROUP BY m.id
+    ORDER BY m.id DESC;
+";
+
 $result = $conn->query($sql);
 ?>
 
@@ -18,6 +27,28 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 목록</title>
+    <style>
+        table, tr {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            width: 100%;
+            background-color: #f4f4f4;
+        }
+        .no-data {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
     <link rel="stylesheet" href="../assets/css/style.css"> <!-- 스타일시트 경로 -->
 </head>
 <body>
@@ -41,24 +72,23 @@ $result = $conn->query($sql);
                     <th>평점</th>
                     <th>상세보기</th>
                 </tr>
-            </thead>
+            </thead>   
             <tbody>
-                <?php if ($result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($row['id']) ?></td>
-                            <td><?= htmlspecialchars($row['title']) ?></td>
-                            <td><?= htmlspecialchars($row['director']) ?></td>
-                            <td><?= htmlspecialchars($row['release_date']) ?></td>
-                            <td><?= htmlspecialchars($row['genre']) ?></td>
-                            <td><?= htmlspecialchars($row['rating']) ?></td>
-                            <td><a href="movie_detail.php?id=<?= $row['id'] ?>">보기</a></td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
+            <?php if ($result->num_rows > 0) : ?>
+                <?php while ($row = $result->fetch_assoc()) : ?>
                     <tr>
-                        <td colspan="7">등록된 영화가 없습니다.</td>
+                        <td><?= htmlspecialchars($row['title']) ?></td>
+                        <td><?= htmlspecialchars($row['director']) ?></td>
+                        <td><?= htmlspecialchars($row['release_date']) ?></td>
+                        <td><?= htmlspecialchars($row['genre']) ?></td>
+                        <td><?= number_format($row['avg_rating'], 1) ?>/10</td>
+                        <td><a href="movie_detail.php?id=<?= htmlspecialchars($row['id']) ?>">보기</a></td>
                     </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="6" class="no-data">등록된 영화가 없습니다.</td>
+                </tr>
                 <?php endif; ?>
             </tbody>
         </table>

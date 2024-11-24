@@ -75,55 +75,54 @@
 
 </head>
 <body>
-    <p style="color:#fff"><a href="index.html">🏠home</a>
-    <h2>회원가입✒️</h2>
-        <form id="registerForm" action="register_process.php" method="POST" onsubmit="return validateForm();">
+    <p style="color:#fff"><a href="index.html">🏠home</a><br><br>
+    <h2>회원가입✒️<br></h2>
+        <form id="registerForm" action="register_process.php" method="POST" onsubmit="return validateForm();" style="width: 600px">
         <!-- 성명 -->
         <label>성명:</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name" required style="width: 150px; margin: 10px 5px;">
+        
+        <!-- Email -->
+        <label>  Email:</label>
+        <input type="email" name="email" required placeholder="abc123@example.com" style="width: 250px; margin: 0px 5px;">
         <br>
 
         <!-- ID -->
         <label>ID:</label>
-        <input type="text" name="userID" required>
-        <button type="button" onclick="checkUserID()">ID 중복 여부 확인</button><br>
+        <input type="text" name="userID" required style="width: 320px; margin: 0px 5px;">
+        <button type="button" onclick="checkUserID()" style="width: 140px;">ID 중복 여부 확인</button><br>
         <span id="id-check-message"></span>
-        <br>
-
-        <!-- Email -->
-        <label>Email:</label>
-        <input type="email" name="email" required placeholder="abc123@example.com">
         <br>
 
         <!-- 주민등록번호 -->
         <label>주민등록번호:</label>
-        <input type="text" name="identifNum1" maxlength="6" required placeholder="123456">
+        <input type="text" name="identifNum1" maxlength="6" required placeholder="123456" style="width: 200px; margin: 0px 5px;">
         <span>-</span>
-        <input type="password" name="identifNum2" maxlength="7" required placeholder="●●●●●●●">
+        <input type="password" name="identifNum2" maxlength="7" required placeholder="●●●●●●●" style="width: 200px;">
         <br>
 
         <!-- 주소 -->
         <label>주소:</label>
-        <input type="text" name="address" required>
+        <input type="text" name="address" required style="width: 475px; margin: 0 5px;">
         <br>
 
         <!-- 휴대폰 번호 -->
         <label>휴대폰번호:</label>
-        <input type="text" width=30px name="phoneNumber1" maxlength="3" required placeholder="010">
+        <input type="text" width=30px name="phoneNumber1" maxlength="3" required placeholder="010" style="width: 100px; margin: 0 5px;">
         <span>-</span>
-        <input type="text" width=30px name="phoneNumber2" maxlength="4" required placeholder="1234">
+        <input type="text" width=30px name="phoneNumber2" maxlength="4" required placeholder="1234" style="width: 100px;">
         <span>-</span>
-        <input type="text" width=30px name="phoneNumber3" maxlength="4" required placeholder="5678">
+        <input type="text" width=30px name="phoneNumber3" maxlength="4" required placeholder="5678" style="width: 100px;">
         <br>
 
         <!-- 비밀번호 -->
-        <label>비밀번호:</label>
-        <input type="password" name="password" required placeholder="영어, 특수문자, 숫자 포함 8자리 이상">
+        <label>비밀번호 :</label>
+        <input type="password" name="password" required placeholder="영어, 특수문자, 숫자 포함 8자리 이상" style="width: 340px; margin-left: 20px;">
         <br>
 
         <!-- 비밀번호 확인 -->
         <label>비밀번호 확인:</label>
-        <input type="password" name="passwordCheck" required placeholder="비밀번호 확인">
+        <input type="password" name="passwordCheck" required placeholder="비밀번호 확인" style="width: 340px;">
         <br>
 
         <button type="submit">회원가입</button>
