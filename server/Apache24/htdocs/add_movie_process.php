@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $sql = "INSERT INTO movies (title, director, release_date, genre, rating, poster_path)
         VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('ssssds', $title, $director, $release_year, $genre, $rating, $poster_path);
+$stmt->bind_param('ssssds', $title, $director, $release_date, $genre, $rating, $poster_path);
 
 if ($stmt->execute()) {
     echo "영화가 성공적으로 등록되었습니다.";

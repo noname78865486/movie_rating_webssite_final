@@ -11,6 +11,7 @@
         <!--영화 포스터 등록 부분-->
         <label>영화 포스터:</label>
         <input type="file" name="poster" accept="image/*"required><br>
+        
         <!--영화 정보 입력 부분-->    
         <label>영화 제목:</label>
         <input type="text" name="title" required><br>
@@ -37,9 +38,9 @@
             <option value="etc">기타</option>
         </select><br>
 
-        <!--<label>평점:</label>
+        <label>평점:</label>
         <input type="number" name="rating" min="0" max="10" step="0.5" required placeholder="0~10점 사이 0.5점 단위로 입력"><br>
-        -->
+
         <button type="submit">등록</button>
     </form>
 </body>

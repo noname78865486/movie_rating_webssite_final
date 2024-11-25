@@ -51,13 +51,13 @@ body {width: 100%; margin: 0 auto; text-align: center;
     background: linear-gradient(to left, #2ad3c5, #b278d3, #e43e3e);
     font-family: sans-serif;
 }
-.wrap { width: 450px; height: 600px; margin: 0 auto;
+.wrap {width: 450px; height: 600px; margin: 0 auto;
     background-color: #fff; border-radius: 5px; display: flex; 
     justify-content: center; align-items: center;
 }
 .wrap > div { width: 100%; margin: 0 100px;
 }
-h1 { margin-bottom: 10px;
+h1 {margin-bottom: 10px;
 }
 /* submit을 제외한 나머지 input 태그에 적용 */
 .wrap .form input:not(input[type='submit'], input[type='checkbox']) {
