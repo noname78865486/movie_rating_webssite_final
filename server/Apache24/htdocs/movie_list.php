@@ -19,7 +19,7 @@ $sql = "
     FROM movies m
     LEFT JOIN reviews r ON m.id = r.movie_id
     GROUP BY m.id
-    ORDER BY m.id DESC;
+    ORDER BY m.id ASC;
 ";
 
 $result = $conn->query($sql);
@@ -33,20 +33,30 @@ $result = $conn->query($sql);
     <title>영화 목록</title>
     <style>
         table {
-            width: 100%;
+            width: 90%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 20px auto;
+            table-layout: fixed; /* 열 간격을 고정 */
         }
         table th, table td {
-            width: 40px ;
             border: 1px solid #ccc;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
         table th {
-            width: 100%;
             background-color: #f4f4f4;
         }
+        table td {
+            word-wrap: break-word; /* 긴 텍스트 줄바꿈 */
+        }
+        /* 각 열의 비율을 지정 (전체 열을 균일하게 설정) */
+        table th:nth-child(1), table td:nth-child(1) { width: 5%; } /* No.(ID) */
+        table th:nth-child(2), table td:nth-child(2) { width: 45%; } /* 제목 */
+        table th:nth-child(3), table td:nth-child(3) { width: 12%; } /* 감독 */
+        table th:nth-child(4), table td:nth-child(4) { width: 13%; } /* 개봉일 */
+        table th:nth-child(5), table td:nth-child(5) { width: 10%; } /* 장르 */
+        table th:nth-child(6), table td:nth-child(6) { width: 10%; } /* 평점 */
+        table th:nth-child(7), table td:nth-child(7) { width: 10%; } /* 상세보기 */
         .no-data {
             text-align: center;
             font-size: 18px;
@@ -68,7 +78,7 @@ $result = $conn->query($sql);
         <table border="1">
             <thead>
                 <tr>
-                    <th>번호</th>
+                    <th>No.</th>
                     <th>제목</th>
                     <th>감독</th>
                     <th>개봉일</th>
@@ -81,17 +91,18 @@ $result = $conn->query($sql);
             <?php if ($result->num_rows > 0) : ?>
                 <?php while ($row = $result->fetch_assoc()) : ?>
                     <tr>
+                        <td><?= htmlspecialchars($row['id']) ?></td>
                         <td><?= htmlspecialchars($row['title']) ?></td>
                         <td><?= htmlspecialchars($row['director']) ?></td>
                         <td><?= htmlspecialchars($row['release_date']) ?></td>
                         <td><?= htmlspecialchars($row['genre']) ?></td>
                         <td><?= number_format($row['avg_rating'], 1) ?>/10</td>
-                        <td><a href="movie_detail.php?id=<?= htmlspecialchars($row['id']) ?>">보기</a></td>
+                        <td><a style="color: blue;" href="movie_detail.php?id=<?= htmlspecialchars($row['id']) ?>">보기</a></td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6" class="no-data">등록된 영화가 없습니다.</td>
+                    <td colspan="7" class="no-data">등록된 영화가 없습니다.</td>
                 </tr>
                 <?php endif; ?>
             </tbody>

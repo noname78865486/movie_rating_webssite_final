@@ -5,5 +5,6 @@ CREATE TABLE movies (
     release_date date,
     genre varchar(100),
     rating FLOAT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    poster_path VARCHAR(255)
 );
