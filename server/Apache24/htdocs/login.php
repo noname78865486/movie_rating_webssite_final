@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div>
-        <p><a style="color:red; margin=10px 0;" href="index.html">🏠home</a>
+        <p><a style="color:red; margin=10px 0;" href="index.php">🏠home</a>
         <h1 style="color:#fff; margin=10px 0;">로그인</h1>
         <?php if (isset($error))echo "<p style='color: red;'>$error</p>";?>
         <form action="login.php" method="post">

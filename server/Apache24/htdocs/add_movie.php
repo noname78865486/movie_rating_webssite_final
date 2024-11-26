@@ -1,3 +1,14 @@
+<?php
+session_start(); // 세션 시작
+
+// 로그인된 상태인지 확인
+if (!isset($_SESSION['userID'])) {
+    header("Location: login.php"); // 로그인되지 않았다면 로그인 페이지로 리다이렉트
+    exit;
+}
+$userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가져옴
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +17,10 @@
     <style> body{height=100%;} </style>
 </head>
 <body>
+    <nav>
+        <a href="dashboard.php">🏠 home</a><br>
+        <a href="movie_list.php">🎞️ 영화 목록</a>
+    </nav>
     <h2>영화 등록</h2>
     <form action="add_movie_process.php" method="POST" enctype="multipart/form-data">
         <!--영화 포스터 등록 부분-->

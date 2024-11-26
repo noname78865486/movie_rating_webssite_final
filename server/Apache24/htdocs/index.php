@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// 로그인 여부 확인
+$isLoggedIn = isset($_SESSION['username']); // 세션에 username이 있으면 로그인 상태
+$username = $isLoggedIn ? $_SESSION['username'] : null;
+?>
+
 <!--로그인하지 않은 유저만 볼 수 있는 index-->
 <!DOCTYPE html>
 <html lang="en">

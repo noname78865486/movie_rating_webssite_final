@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// 로그인 여부 확인
+$isLoggedIn = isset($_SESSION['username']); // 세션에 username이 있으면 로그인 상태
+$username = $isLoggedIn ? $_SESSION['username'] : null;
+?>
+
 <!--로그인하지 않은 유저만 볼 수 있는 index-->
 <!DOCTYPE html>
 <html lang="en">
@@ -7,17 +15,6 @@
     <title>Movie Rating Website</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        /* Flexbox를 사용한 수직 및 수평 중앙 정렬 */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* 화면 전체 높이를 채움 */
-            margin: 0; /* 기본 여백 제거 */
-            background-color: #333; /* 배경색 추가 */
-            font-family: Arial, sans-serif;
-        }
-
         /* 텍스트 및 링크 스타일 */
         h1 {
             font-size: 50px;
@@ -42,11 +39,10 @@
         }
     </style>
 </head>
-<body>
+<body class="center">
     <div>
         <h1>Welcome to<br>
             🎞️ Movie Rating! 🍿<br>
-            YOU ARE ADMIN.<br>
         </h1>
         <hr style="width: 50%; margin: 10px auto; border: 1px solid #fff;">
         <p><a href="movie_list.php">Show Movie List📽️</a></p>

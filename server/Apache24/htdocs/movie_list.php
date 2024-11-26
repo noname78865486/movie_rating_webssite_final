@@ -1,10 +1,10 @@
-<?php
-// <기능 설명>
-// - 영화 목록 보여주는 기능
-// - 누구든 영화 목록 및 점수 조회 가능
-// - 영화 추가는 로그인한 사람만 가능
-// - 댓글 형식으로 점수 추가 및 코멘트 가능
+<!-- 기능설명
+- 영화 목록 보여주는 기능
+- 누구든 영화 목록 및 점수 조회 가능
+- 영화 추가는 로그인한 사람만 가능
+- 댓글 형식으로 점수 추가 및 코멘트 가능 -->
 
+<?php
 //DB 연결
 require_once 'config/db.php';
 
@@ -21,8 +21,15 @@ $sql = "
     GROUP BY m.id
     ORDER BY m.id ASC;
 ";
-
 $result = $conn->query($sql);
+?>
+
+<?php
+// 세션 시작
+session_start();
+
+// 로그인 여부를 판단 (로그인한 경우 $_SESSION['user_id']가 존재한다고 가정)
+$isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +38,28 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 목록</title>
+    <script>
+        // 영화 추가 클릭 시 로그인 여부를 판단하여 로그인하지 않은 유저 차단
+        function handleAddMovie(isLoggedIn) {
+            if (isLoggedIn) {
+                // 로그인된 사용자일 경우 add_movie.php로 이동
+                window.location.href = 'add_movie.php';
+            } else {
+                // 로그인되지 않은 경우 경고 메시지 표시
+                alert('로그인한 회원만 가능한 기능입니다.');
+            }
+        }
+        // home 클릭 시 로그인 여부에 따라 연결되는 index 페이지를 분리
+        function handleHomeClick(isLoggedIn) {
+            if (isLoggedIn) {
+                // 로그인된 사용자일 경우 dashboard.php로 이동
+                window.location.href = 'dashboard.php';
+            } else {
+                // 로그인되지 않은 경우 index.php로 이동
+                window.location.href = 'index.php';
+            }
+        }
+    </script>
     <style>
         table {
             width: 90%;
@@ -69,8 +98,9 @@ $result = $conn->query($sql);
     <header>
         <h1>영화 목록</h1>
         <nav>
-            <a href="index.HTML">🏠Home</a>
-            <a href="#" onclick="alert('로그인한 회원만 가능한 기능입니다.'); return false;">➕영화 추가</a>
+            <!-- 로그인 여부를 JavaScript로 전달 -->
+            <a href="#" onclick="handleHomeClick(<?= $isLoggedIn ? 'true' : 'false' ?>)">🏠Home</a>
+            <a href="#" onclick="handleAddMovie(<?= $isLoggedIn ? 'true' : 'false' ?>)">➕영화 추가</a>
         </nav>
     </header>
 
