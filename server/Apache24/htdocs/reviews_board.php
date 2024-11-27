@@ -2,22 +2,22 @@
 require_once 'config/db.php'; // DB 연결
 session_start(); // 세션 시작
 
-// 로그인 여부를 판단 (로그인한 경우 $_SESSION['user_id']가 존재한다고 가정)
+// 로그인 여부를 판단 (로그인한 경우 $_SESSION['userID']가 존재한다고 가정)
 $isLoggedIn = isset($_SESSION['userID']);
 
 // 로그인한 유저의 ID 확인
-$user_id = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
+$userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
 
-if ($isLoggedIn && $user_id) {
+if ($isLoggedIn && $userID) {
     // MySQL DB에서 조건에 맞는 후기만 가져오기
-    $sql = "SELECT r.id, r.title, r.content, u.userID, r.created_at, r.user_id, r.rating, r.movie_id
+    $sql = "SELECT r.id, r.title, r.content, u.userID, r.created_at, r.userID, r.rating, r.movie_id
             FROM reviews r
-            JOIN users u ON r.user_id = u.userID
-            WHERE r.visibility = 'public' OR r.user_id = ?
+            JOIN users u ON r.userID = u.userID
+            WHERE r.visibility = 'public' OR r.userID = ?
             ORDER BY r.created_at DESC";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $user_id); // 로그인한 사용자의 ID를 바인딩
+    $stmt->bind_param('i', $userID); // 로그인한 사용자의 ID를 바인딩
     $stmt->execute();
     $result = $stmt->get_result();
 

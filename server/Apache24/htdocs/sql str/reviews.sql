@@ -1,7 +1,7 @@
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     movie_id  INT NOT NULL,
-    userID  VARCHAR(50) NOT NULL UNIQUE,
+    userID  VARCHAR(50) NOT NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     rating FLOAT NOT NULL,

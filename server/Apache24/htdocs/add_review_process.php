@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 파일 업로드 처리
     $upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/review_file/';
     $file_path = '';
+    
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $file_tmp_name = $_FILES['file']['tmp_name'];
@@ -24,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             die("파일 업로드 실패.");
         }
     } else {
+        echo '<pre>';
+        print_r($_FILES);
+        echo '</pre>';
         die("파일을 업로드하세요.");
     }
 }
@@ -32,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $title = $_POST['title'];
 $content = $_POST['content'];
 $visibility = $_POST['visibility'];
-$userID = $_SESSION['userID'];
+$user_id = $_SESSION['userID'];
 $movie_id = $_POST['movie_id']; // 영화 ID가 전달된다고 가정
 $rating = isset($_POST['rating']) ? $_POST['rating'] : NULL;  // rating 값이 없으면 NULL
 
@@ -60,7 +64,7 @@ $stmt = $conn->prepare($sql);
 
 // bind_param에서 데이터 타입을 맞춰줍니다.
 // 'i' = integer, 's' = string
-$stmt->bind_param("iisssss", $movie_id, $userID, $title, $content, $rating, $visibility, $file_path);
+$stmt->bind_param("iisssss", $movie_id, $user_id, $title, $content, $rating, $visibility, $file_path);
 $stmt->execute();
 
 // 영화 평점 업데이트를 위한 함수 호출
