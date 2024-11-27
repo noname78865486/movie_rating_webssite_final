@@ -75,7 +75,7 @@
 
 </head>
 <body>
-    <p style="color:#fff"><a href="index.html">🏠home</a><br><br>
+    <p style="color:#fff"><a href="index.php">🏠home</a><br><br>
     <h2>회원가입✒️<br></h2>
         <form id="registerForm" action="register_process.php" method="POST" onsubmit="return validateForm();" style="width: 600px">
         <!-- 성명 -->
