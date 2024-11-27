@@ -488,3 +488,8 @@ Apache server interrupted...
 [Mon Nov 25 16:56:03.034646 2024] [php:warn] [pid 6092:tid 1112] [client 127.0.0.1:15330] PHP Warning:  Undefined array key "release_date" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 15, referer: http://localhost/add_movie.php
 [Mon Nov 25 16:57:08.910811 2024] [php:warn] [pid 6092:tid 1112] [client 127.0.0.1:15336] PHP Warning:  Undefined array key "release_date" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 15, referer: http://localhost/add_movie.php
 [Mon Nov 25 16:58:02.278328 2024] [php:warn] [pid 6092:tid 1100] [client 127.0.0.1:15344] PHP Warning:  Undefined array key "release_date" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 15, referer: http://localhost/add_movie.php
+[Wed Nov 27 22:12:17.698957 2024] [mpm_winnt:notice] [pid 9292:tid 372] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Wed Nov 27 22:12:17.699955 2024] [mpm_winnt:notice] [pid 9292:tid 372] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Wed Nov 27 22:12:17.699955 2024] [core:notice] [pid 9292:tid 372] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
+[Wed Nov 27 22:12:17.708081 2024] [mpm_winnt:notice] [pid 9292:tid 372] AH00418: Parent: Created child process 12948
+[Wed Nov 27 22:12:18.827598 2024] [mpm_winnt:notice] [pid 12948:tid 424] AH00354: Child: Starting 64 worker threads.

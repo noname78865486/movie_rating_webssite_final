@@ -1,3 +1,4 @@
+use movie_rating_website;
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     movie_id INT,
