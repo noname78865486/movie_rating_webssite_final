@@ -3,6 +3,7 @@ session_start(); // 세션 시작
 
 // 로그인된 상태인지 확인
 if (!isset($_SESSION['userID'])) {
+    alert ('로그인한 회원만 가능한 기능입니다.');
     header("Location: login.php"); // 로그인되지 않았다면 로그인 페이지로 리다이렉트
     exit;
 }
