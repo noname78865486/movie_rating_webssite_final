@@ -2,6 +2,11 @@
 require_once 'config/db.php'; // DB 연결
 session_start(); // 세션 시작
 
+// 리뷰 등록 성공 시 성공 메세지 표출
+if (isset($_GET['message']) && $_GET['message'] == 'success') {
+    echo "<script>alert('리뷰 등록이 성공적으로 완료되었습니다!');</script>";
+}
+
 // 로그인 여부를 판단 (로그인한 경우 $_SESSION['userID']가 존재한다고 가정)
 $isLoggedIn = isset($_SESSION['userID']);
 
@@ -10,23 +15,22 @@ $userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
 
 if ($isLoggedIn && $userID) {
     // MySQL DB에서 조건에 맞는 후기만 가져오기
-    $sql = "SELECT r.id, r.title, r.content, u.userID, r.created_at, r.userID, r.rating, r.movie_id
+    $sql = "SELECT r.id, r.movie_id, r.userID, r.title, r.content, r.rating, r.visibility, r.created_at, r.file_path
             FROM reviews r
-            JOIN users u ON r.userID = u.userID
             WHERE r.visibility = 'public' OR r.userID = ?
             ORDER BY r.created_at DESC";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $userID); // 로그인한 사용자의 ID를 바인딩
+    $stmt->bind_param('s', $userID); // 로그인한 사용자의 ID를 바인딩
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     if ($result->num_rows > 0) {
         // 결과가 있다면 출력
         while ($post = $result->fetch_assoc()) {
-            echo "<h3>" . htmlspecialchars($post['title']) . "</h3>";
-            echo "<p>" . htmlspecialchars($post['content']) . "</p>";
-            echo "<p>Posted by: " . htmlspecialchars($post['userID']) . " on " . $post['created_at'] . "</p>";
+            echo "<h3>" . (isset($post['title']) ? htmlspecialchars($post['title']) : '제목 없음') . "</h3>";
+            echo "<p>" . (isset($post['content']) ? htmlspecialchars($post['content']) : '내용 없음') . "</p>";
+            echo "<p>Posted by: " . (isset($post['userID']) ? htmlspecialchars($post['userID']) : '익명') . "</p>";
             echo "<hr>";
         }
     }
