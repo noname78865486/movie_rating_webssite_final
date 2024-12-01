@@ -16,6 +16,7 @@ $sql = "SELECT r.id, r.movie_id, m.title AS movie_title, m.poster_path,
         FROM reviews r
         JOIN users u ON r.rating_user_idNum = u.id
         JOIN movies m ON r.movie_id = m.id
+        WHERE r.visibility = 'public' 
         OR r.rating_user_idNum = ? 
         ORDER BY r.created_at DESC;";
 
@@ -155,7 +156,7 @@ $result = $stmt->get_result();
                             <td>
                                 <?php 
                                 // 비밀글 처리
-                                if ($row['visibility'] == '비공개' && $row['rating_user_idNum'] != $userID) {
+                                if ($row['visibility'] == 'private' && $row['rating_user_idNum'] != $userID) {
                                     echo '<span class="secret-post">비밀글입니다.</span>';
                                 } else {
                                     echo htmlspecialchars($row['review_title']);

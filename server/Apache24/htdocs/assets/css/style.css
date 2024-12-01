@@ -40,6 +40,18 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+.line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    width: 100%; /* 부모 컨테이너의 가로 길이 사용 */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 
 a { text-decoration: none; color: #ffffff;
 }

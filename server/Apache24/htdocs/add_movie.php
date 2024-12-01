@@ -40,17 +40,18 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
         <label>장르:</label> 
         <select name="genre">
             <option value="none"> 선택 </option>
-            <option value="action">액션</option>
-            <option value="comedy">코미디</option>
-            <option value="romance">로맨스</option>
-            <option value="thriler">스릴러</option>
-            <option value="animation">애니메이션</option>
-            <option value="drama">드라마</option>
+            <option value="액션">액션</option>
+            <option value="코미디">코미디</option>
+            <option value="로맨스">로맨스</option>
+            <option value="스릴러">스릴러</option>
+            <option value="애니메이션">애니메이션</option>
+            <option value="드라마">드라마</option>
             <option value="SF">SF</option>
-            <option value="fantasy">판타지</option>
-            <option value="horror">공포</option>
-            <option value="documentary">다큐</option>
-            <option value="etc">기타</option>
+            <option value="판타지">판타지</option>
+            <option value="공포">공포</option>
+            <option value="다큐">다큐</option>
+            <option value="역사">역사</option>
+            <option value="기타">기타</option>
         </select><br>
 
         <!--<label>평점:</label>

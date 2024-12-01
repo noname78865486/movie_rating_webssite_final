@@ -19,21 +19,22 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
     <style>body {height: 100%;}</style>
 </head>
 <body>
+    
     <nav>
         <a href="dashboard.php">🏠 home</a><br>
         <a href="movie_list.php">🎞️ 영화 목록</a><br>
-        <a href="reviews_board.php">⭐ 리뷰 목록</a>
+        <a href="movie_list.php">⭐ 리뷰 목록</a>
     </nav>
     <h2>리뷰 등록</h2>
     <form action="add_review_process.php" method="POST" enctype="multipart/form-data" style="width: 600px; text-align: left; margin: 0 auto;">
-        <!--영화 목록에서 관련 영화 가져와서 태그하는 기능-->
+        <!--영화 목록에서 관련 영화 가져와서 태그-->
         <label for="movie_title" style="display: block; margin-bottom: 0px;">영화 선택:</label>
         <input type="text" id="movie_title" name="movie" readonly style="width: 83%; box-sizing: border-box; cursor: pointer;" >
         <input type="hidden" id="movie_id" name="movie_id">
         <button type="button" onclick="openMoviePopup()">영화 선택</button>
         <script>
             function openMoviePopup() {
-                // 영화 선택을 위한 팝업창 열기
+                // 팝업창 열기
                 window.open('movie_list_popup.php', 'moviePopup', 'width=600,height=400');
             }
             function setSelectedMovie(title, id) {
@@ -61,15 +62,15 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
             <div style="flex: 1; margin-right: 10px;">
                 <label for="visibility" style="display: block; margin-bottom: 4px;">후기 공개/비공개 여부:</label>
                 <select style="width: 100%; box-sizing: border-box;" name="visibility">
-                    <option value="공개">전체공개</option>
-                    <option value="비공개">비공개</option>
+                    <option value="public">전체공개</option>
+                    <option value="private">비공개</option>
                 </select>
             </div>
 
             <!-- 이미지 업로드 -->
             <div style="flex: 1;">
                 <label>파일 업로드:</label>
-                <input type="file" name="file"><br>
+                <input type="file" name="file"required><br>
             </div><br>
         </div>
 
@@ -80,4 +81,5 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
         
         <!-- 제출 버튼 -->
         <button type="submit" style="margin-top: 16px;">저장</button>
-    </form>
+        </form>
+
