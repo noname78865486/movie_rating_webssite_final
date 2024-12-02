@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
                 echo "댓글 삭제 중 오류가 발생했습니다.";
             }
         } else {
-            echo "권한이 없습니다.";
+            echo "권한이 없습니다."; // 작성자가 아닌 경우
         }
     } else {
         echo "댓글을 찾을 수 없습니다.";
@@ -118,6 +118,18 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>후기 상세 정보</title>
+    <script>
+        // 리뷰 추가 클릭 시 로그인 여부를 판단하여 로그인하지 않은 유저 차단
+        function handleAddreview(isLoggedIn) {
+            if (isLoggedIn) {
+                // 로그인된 사용자일 경우 add_review.php로 이동
+                window.location.href = 'add_review.php';
+            } else {
+                // 로그인되지 않은 경우 경고 메시지 표시
+                alert('로그인한 회원만 가능한 기능입니다.');
+            }
+        }
+    </script>
     <style>
         body {
             height: 100%;
@@ -145,6 +157,17 @@ $conn->close();
             padding: 20px;
             width: 300px;
             background: #fff;
+        }
+        /* 각 열의 비율을 지정 (전체 열을 균일하게 설정) */
+        table th:nth-child(1), table td:nth-child(1) { width: 10%; } /* 댓글 작성자 */
+        table th:nth-child(2), table td:nth-child(2) { width: 8%; } /* 공개/비공개 */
+        table th:nth-child(3), table td:nth-child(3) { width: 30%; } /* 내용 */
+        table th:nth-child(4), table td:nth-child(4) { width: 10%; } /* 작성시간 */
+        table th:nth-child(5), table td:nth-child(5) { width: 3%; } /* 삭제 */
+        .no-data {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
@@ -222,7 +245,7 @@ $conn->close();
             <!-- 댓글 표 -->
             <div>
                 <!--리뷰 표 규격-->
-                <table style="width: 1000px; border-collapse: collapse; text-align: center; border-radius: 0px; box-shadow: 0 0 0;">
+                <table style="width: 1000px; border-collapse: collapse; border-radius: 0px; box-shadow: 0 0 0;">
                     <thead>
                         <tr style="background-color: #f2f2f2;">
                             <th style="border: 1px solid #ddd; padding: 8px;">댓글 작성자</th>
@@ -234,30 +257,37 @@ $conn->close();
                     </thead>
                     <!--리뷰 표 내용-->
                     <tbody>
-                        <?php while ($comment = $comments->fetch_assoc()): ?>
-                        <tr>
-                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                                <?= htmlspecialchars($comment['userID']) ?>
-                            </td>
-                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                                <?= htmlspecialchars($comment['visibility']) ?>
-                            </td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">
-                                <?= nl2br(htmlspecialchars($comment['content'])) ?>
-                            </td>
-                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                                <?= $comment['created_at'] ?>
-                            </td>
-                            <td>
-                                <?php if ($comment['user_id'] == $rating_user_idNum): ?>
-                                    <form method="POST" action="delece_comment.php" style="margin: 0 0 important!; padding: 0px; width: 60px; background: #fff;">
-                                        <input type="hidden" name="delete_comment_id" value="<?= $comment['comment_id'] ?>">
-                                        <button class="delete-button" type="button" onclick="confirmDelete(<?= $comment['comment_id'] ?>)">삭제</button>
-                                    </form>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                        <?php endwhile; ?>
+                        <?php if ($comments->num_rows > 0): ?> <!-- 댓글이 있을 경우 -->
+                            <?php while ($comment = $comments->fetch_assoc()): ?>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                    <?= htmlspecialchars($comment['userID']) ?>
+                                </td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                    <?= htmlspecialchars($comment['visibility']) ?>
+                                </td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">
+                                    <?= nl2br(htmlspecialchars($comment['content'])) ?>
+                                </td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                    <?= $comment['created_at'] ?>
+                                </td>
+                                <!-- 댓글 삭제 버튼 -->
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: center; vertical-align: middle;">
+                                    <?php if ($comment['user_id'] == $rating_user_idNum): ?>
+                                        <form id="delete-comment-form-<?= $comment['comment_id'] ?>" method="POST" action="" style="margin: 0; padding: 0; width: 60px; background: #fff;">
+                                            <input type="hidden" name="delete_comment_id" value="<?= $comment['comment_id'] ?>">
+                                            <button type="button" onclick="confirmDelete(<?= $comment['comment_id'] ?>)" style="background-color: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">삭제</button>
+                                        </form>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?> <!-- 댓글이 없을 경우 -->
+                            <tr>
+                                <td colspan="5" class="no-data">등록된 댓글이 없습니다.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -269,7 +299,7 @@ $conn->close();
                 const confirmation = confirm("이 댓글을 삭제하시겠습니까?");
                 if (confirmation) {
                     const form = document.getElementById('delete-comment-form-' + commentId);
-                    form.submit();
+                    form.submit(); // 삭제 폼 제출
                 }
             }
         </script>
