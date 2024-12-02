@@ -39,12 +39,75 @@ $stmt->bind_param('i', $id); // id를 바인딩
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    $reviews = $result->fetch_assoc();
-} else {
-    die("후기를 찾을 수 없습니다.");
+if ($result->num_rows > 0) { $reviews = $result->fetch_assoc(); }
+    else {die("후기를 찾을 수 없습니다.");}
+
+// 댓글 저장 로직
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
+    $commentContent = trim($_POST['comment']);
+    $visibility = $_POST['visibility'] ?? '공개'; // 기본값은 '공개'
+
+    if (!empty($commentContent) && $userId) {
+        $sql = "INSERT INTO comments (review_id, user_id, content, visibility) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('iiss', $id, $rating_user_idNum, $commentContent, $visibility);
+
+        if ($stmt->execute()) {
+            header("Location: review_detail.php?id=" . $id); // 댓글 작성 후 페이지 새로고침
+            exit;
+        } else {
+            echo "댓글을 저장하는 중 오류가 발생했습니다.";
+        }
+    } else {
+        echo "댓글 내용을 입력하세요.";
+    }
 }
 
+// 댓글 불러오기 로직
+$sql = "SELECT c.content, c.created_at, c.visibility, u.userID, c.user_id, c.id AS comment_id
+        FROM comments c
+        JOIN users u ON c.user_id = u.id
+        WHERE c.review_id = ?
+        AND (c.visibility = '공개' OR c.user_id = ? OR ? = ?)
+        ORDER BY c.created_at DESC";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('iiii', $id, $rating_user_idNum, $rating_user_idNum, $reviews['rating_user_idNum']);
+$stmt->execute();
+$comments = $stmt->get_result();
+
+// 댓글 삭제 로직
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id'])) {
+    $commentId = intval($_POST['delete_comment_id']);
+
+    // 댓글 작성자인지 확인
+    $sql = "SELECT user_id FROM comments WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $commentId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $comment = $result->fetch_assoc();
+        if ($comment['user_id'] === $rating_user_idNum) { // 작성자가 맞는 경우
+            $deleteSql = "DELETE FROM comments WHERE id = ?";
+            $deleteStmt = $conn->prepare($deleteSql);
+            $deleteStmt->bind_param('i', $commentId);
+
+            if ($deleteStmt->execute()) {
+                header("Location: review_detail.php?id=" . $id); // 삭제 후 페이지 새로고침
+                exit;
+            } else {
+                echo "댓글 삭제 중 오류가 발생했습니다.";
+            }
+        } else {
+            echo "권한이 없습니다.";
+        }
+    } else {
+        echo "댓글을 찾을 수 없습니다.";
+    }
+}
+
+// DB 연결 종료
 $conn->close();
 ?>
 
@@ -57,7 +120,8 @@ $conn->close();
     <title>후기 상세 정보</title>
     <style>
         body {
-            margin: 100px 0 0 0; /* 상단 여백 50px */
+            height: 100%;
+            width: 100%;
         }
         .float_box {
             display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 8px; background-color: #fff; width: 300px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -76,67 +140,144 @@ $conn->close();
             justify-content: flex-start;
             align-items: flex-start;
         }
-    </style>
-    <script>
-        // 비밀글이 아닌 경우만 내용을 표시하고, 다른 사용자는 알림 후 돌아가게 처리
-        function checkAccess(userId, reviewUserId) {
-            if (userId != reviewUserId) {
-                alert('비밀글입니다.');
-                window.history.back(); // 이전 페이지로 돌아가기
-            }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            background: #fff;
         }
-    </script>
+    </style>
 </head>
 <body>
     <div style="width: 600px; margin: 20px auto; padding: 20px;">
+        <!--비밀글 사용자 검증 : 비공개일 경우 작성자의 ID와 현재 접속한 유저의 ID를 비교하여 일치하는 경우에만 게시글 표출-->
         <?php if ($reviews['visibility'] == '비공개' && $reviews['rating_user_idNum'] != $rating_user_idNum): ?>
             <script>
-                checkAccess(<?= json_encode($rating_user_idNum) ?>, <?= json_encode($reviews['rating_user_idNum']) ?>);
+                alert('비밀글입니다.');
+                window.history.back(); // 이전 페이지로 돌아가기
             </script>
         <?php else: ?>
-            <!-- 영화 포스터와 정보 박스 -->
-            <div style="display: flex; justify-content: flex-start; align-items: flex-start; padding: 10px; width: 600px;">
-                <div class="movie-poster">
-                    <?php if (!empty($reviews['poster_path'])): ?>
-                        <img src="<?= htmlspecialchars($reviews['poster_path']) ?>" alt="영화 포스터" style="max-width: 100%;">
-                    <?php else: ?>
-                        <p style="color: #888;">포스터가 없습니다.</p>
-                    <?php endif; ?>
-                </div>
-                <div class="movie-info">
-                    <div class="float_box">
-                        <p>공개여부: <?= htmlspecialchars($reviews['visibility']) ?></p>
-                    </div>
-                    <div class="float_box">
-                        <p>글쓴이: <?= htmlspecialchars($reviews['userID']) ?></p>
-                    </div>
-                    <div class="float_box">
-                        <p>평점: <?= htmlspecialchars($reviews['rating']) ?>/10</p>
-                    </div>
-                    <div class="float_box">
-                        <p>작성일자: <?= htmlspecialchars($reviews['created_at']) ?></p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 8px; background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
-                <p>제목 : <?= $reviews['review_title'] ?></p>
-            </div>
-
-            <div style="background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; margin-top: 16px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); text-align: left;">
-                <p>리뷰 내용 : <br><?= nl2br(htmlspecialchars($reviews['content'])) ?></p>
-            </div>
-
-            <div style="background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; margin-top: 16px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
-                <?php if ($reviews['file_path']): ?>
-                    <img src="<?= $reviews['file_path']?>" alt="포스터" style="max-width: 300px;">
+        
+        <!--후기 제목-->
+        <h1 style="color: white;"><?= $reviews['review_title'] ?></h1>
+        <!-- 영화 포스터와 정보 박스 -->
+        <div style="display: flex; justify-content: flex-start; align-items: flex-start; padding: 10px; width: 600px;">
+            <!--후기 작성 시 태그한 영화의 포스터를 가져오는 코드-->
+            <div class="movie-poster">
+                <?php if (!empty($reviews['poster_path'])): ?>
+                    <img src="<?= htmlspecialchars($reviews['poster_path']) ?>" alt="영화 포스터" style="max-width: 100%;">
                 <?php else: ?>
-                    <p>첨부된 파일이 없습니다.</p>
+                    <p style="color: #888;">포스터가 없습니다.</p>
                 <?php endif; ?>
             </div>
+            <!--영화 및 후기 정보 : 공개여부, 글쓴이, 평점, 작성일자-->
+            <div class="movie-info">
+                <div class="float_box">
+                    <p>공개여부: <?= htmlspecialchars($reviews['visibility']) ?></p>
+                </div>
+                <div class="float_box">
+                    <p>글쓴이: <?= htmlspecialchars($reviews['userID']) ?></p>
+                </div>
+                <div class="float_box">
+                    <p>평점: <?= htmlspecialchars($reviews['rating']) ?>/10</p>
+                </div>
+                <div class="float_box">
+                    <p>작성일자: <?= htmlspecialchars($reviews['created_at']) ?></p>
+                </div>
+            </div>
+        </div>
 
-            <button type="button" style="margin-top: 16px; margin-bottom: 40px;" onclick="history.back();">뒤로가기</button>
+        <!--리뷰 내용 표시-->
+        <div style="background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; margin-top: 16px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); text-align: left;">
+            <p>리뷰 내용 : <br><?= nl2br(htmlspecialchars($reviews['content'])) ?></p>
+        </div>
+
+        <!--후기 첨부파일 표시-->
+        <div style="background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; margin-top: 16px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+            <?php if ($reviews['file_path']): ?>
+                <img src="<?= $reviews['file_path']?>" alt="포스터" style="max-width: 100%; margin-top: 16px;">
+            <?php else: ?>
+                <p style="color: #888;">첨부된 파일이 없습니다.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+        <!-- 댓글 섹션 -->
+        <h1>댓글</h1>
+        <div style="width: 1200px; margin: 0 auto; margin-top: 40px;">
+            <!-- 댓글 작성 폼 -->
+            <form method="POST" action="" style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 30px; width: 1000px;">
+                <!-- 댓글 내용 작성 -->
+                <textarea name="comment" rows="3" style="width: 70%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: none;" placeholder="댓글을 작성하세요..."></textarea>
+                <!-- 공개 여부 및 작성 버튼 -->
+                <div style="width: 25%; display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                    <select name="visibility" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="공개">공개</option>
+                        <option value="비공개">비공개</option>
+                    </select>
+                    <button type="submit" style="width: 100%; padding: 10px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">댓글 작성</button>
+                </div>
+            </form><br>
+
+            <!-- 댓글 표 -->
+            <div>
+                <!--리뷰 표 규격-->
+                <table style="width: 1000px; border-collapse: collapse; text-align: center; border-radius: 0px; box-shadow: 0 0 0;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="border: 1px solid #ddd; padding: 8px;">댓글 작성자</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">공개/비공개</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">내용</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">작성 시간</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">삭제</th>
+                        </tr>
+                    </thead>
+                    <!--리뷰 표 내용-->
+                    <tbody>
+                        <?php while ($comment = $comments->fetch_assoc()): ?>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                <?= htmlspecialchars($comment['userID']) ?>
+                            </td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                <?= htmlspecialchars($comment['visibility']) ?>
+                            </td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">
+                                <?= nl2br(htmlspecialchars($comment['content'])) ?>
+                            </td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                <?= $comment['created_at'] ?>
+                            </td>
+                            <td>
+                                <?php if ($comment['user_id'] == $rating_user_idNum): ?>
+                                    <form method="POST" action="delece_comment.php" style="margin: 0 0 important!; padding: 0px; width: 60px; background: #fff;">
+                                        <input type="hidden" name="delete_comment_id" value="<?= $comment['comment_id'] ?>">
+                                        <button class="delete-button" type="button" onclick="confirmDelete(<?= $comment['comment_id'] ?>)">삭제</button>
+                                    </form>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            // 삭제 확인 및 삭제 요청
+            function confirmDelete(commentId) {
+                const confirmation = confirm("이 댓글을 삭제하시겠습니까?");
+                if (confirmation) {
+                    const form = document.getElementById('delete-comment-form-' + commentId);
+                    form.submit();
+                }
+            }
+        </script>
+
+        </div>
+
         <?php endif; ?>
+        <button type="button" style="margin-top: 16px; margin-bottom: 40px;" onclick="history.back();">뒤로가기</button>
     </div>
 </body>
 </html>

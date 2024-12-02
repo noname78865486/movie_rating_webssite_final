@@ -13,8 +13,6 @@ form{
     padding: 20px;
     width: 300px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 table {
     margin: 20px auto;
@@ -24,7 +22,7 @@ table {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-input,select,textarea {
+input,select,textarea { 
     box-sizing: border-box;
     margin: 10px 0;
     padding: 10px;
