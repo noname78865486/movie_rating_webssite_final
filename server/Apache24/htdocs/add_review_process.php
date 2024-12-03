@@ -11,28 +11,11 @@ function updateMovieRating($conn, $movie_id) {
     $update_stmt->bind_param("ii", $movie_id, $movie_id);
 
     if (!$update_stmt->execute()) {
-        die("평점 업데이트 실패: " . $update_stmt->error);
+        // 예외 처리: 로그 기록
+        error_log("평점 업데이트 실패: " . $update_stmt->error);
+        die("평점 업데이트 실패.");
     }
-    $update_stmt->close();
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // 파일 업로드 처리
-    $upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/review_file/';
-    $file_path = '';
     
-    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $file_tmp_name = $_FILES['file']['tmp_name'];
-        $file_name = basename($_FILES['file']['name']);
-        $file_path = $upload_dir . $file_name;
-
-        // 파일 저장
-        if (move_uploaded_file($file_tmp_name, $file_path)) {
-            $file_path = '/review_file/' . $file_name; // 상대 경로로 저장
-        } else {
-            die("파일 업로드 실패.");
-        }
-    }
 }
 
 // 폼에서 전달된 값 받기
@@ -57,31 +40,26 @@ if ($stmt->num_rows > 0) {
 } else {
     die("사용자 정보를 찾을 수 없습니다.");
 }
-
+// prepare()로 생성된 prepared statement 객체 종료
 $stmt->close();
 
-// 평점 기본값 처리
-if (is_null($rating)) {
-    $rating = 0; // 기본값 설정
-}
-
-// 파일 처리
-$file_path = ''; // 파일이 없을 경우 빈 문자열로 설정
-if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-    $file_tmp = $_FILES['file']['tmp_name'];
-    $file_name = $_FILES['file']['name'];
+// 업로드된 파일 존재할 경우 파일 업로드 처리
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // 파일 업로드 처리
+    $upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/review_file/';
+    $file_path = '';
     
-    // 업로드 폴더 경로
-    $upload_dir = 'review_file/';
-    
-    // 고유한 파일 이름 생성
-    $new_file_name = uniqid() . '_' . basename($file_name);
-    $file_path = $upload_dir . $new_file_name;
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $file_tmp_name = $_FILES['file']['tmp_name'];
+        $file_name = basename($_FILES['file']['name']);
+        $file_path = $upload_dir . $file_name;
 
-    // 파일을 서버에 저장
-    if (!move_uploaded_file($file_tmp, $file_path)) {
-        echo "파일 업로드에 실패했습니다.";
-        exit;
+        // 파일 저장
+        if (move_uploaded_file($file_tmp_name, $file_path)) {
+            $file_path = '/review_file/' . $file_name; // 상대 경로로 저장
+        } else {
+            die("파일 업로드 실패.");
+        }
     }
 }
 

@@ -107,7 +107,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
     }
 }
 
-// DB 연결 종료
+// 후기 삭제 처리
+if (isset($_POST['delete'])) {
+    // 삭제할 리뷰 ID
+    $reviewId = intval($_POST['delete_review_id']); // HTML 폼에서 전달받은 리뷰 ID
+    $rating_user_idNum = $_SESSION['userID']; // 세션에서 사용자 ID 가져오기
+
+    if (!$reviewId || !$rating_user_idNum) {
+        die("잘못된 요청입니다. 리뷰 ID나 사용자 정보를 확인해주세요.");
+    }
+
+    // 게시글 작성자인지 확인
+    $sql = "SELECT rating_user_idNum FROM reviews WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("SQL 준비 실패: " . $conn->error);
+    }
+
+    $stmt->bind_param('i', $reviewId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $comment = $result->fetch_assoc();
+        if ($comment['rating_user_idNum'] === $rating_user_idNum) { // 작성자가 맞는 경우
+            // 리뷰 삭제 쿼리 실행
+            $deleteSql = "DELETE FROM reviews WHERE id = ?";
+            $deleteStmt = $conn->prepare($deleteSql);
+
+            if (!$deleteStmt) {
+                die("SQL 준비 실패: " . $conn->error);
+            }
+
+            $deleteStmt->bind_param('i', $reviewId);
+            if ($deleteStmt->execute()) {
+                // 성공적으로 삭제된 경우
+                $deleteStmt->close();
+                $stmt->close();
+                $conn->close();
+
+                // 리디렉션
+                header("Location: reviews_board.php?message=deleted");
+                exit;
+            } else {
+                die("게시글 삭제 중 오류 발생: " . $deleteStmt->error);
+            }
+        } else {
+            die("삭제 권한이 없습니다.");
+        }
+    } else {
+        die("게시글을 찾을 수 없습니다.");
+    }
+
+    // 리소스 해제
+    $stmt->close();
+}
+
 $conn->close();
 ?>
 
@@ -217,6 +273,7 @@ $conn->close();
 
         <!--후기 첨부파일 표시-->
         <div style="background-color: #fff; width: 600px; border: 1px solid #ccc; padding: 10px; margin-top: 16px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+            <p>첨부 파일 :</p>
             <?php if ($reviews['file_path']): ?>
                 <img src="<?= $reviews['file_path']?>" alt="포스터" style="max-width: 100%; margin-top: 16px;">
             <?php else: ?>
@@ -224,6 +281,16 @@ $conn->close();
             <?php endif; ?>
         </div>
     </div>
+
+    <!-- 리뷰 수정 버튼 -->
+    <a href="edit_review.php?id=<?= $movie['id'] ?>">
+        <button type="button" style="margin-top: 16px;">리뷰 수정</button>
+    </a>
+
+    <!-- 리뷰 삭제 버튼 -->
+    <form method="POST" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+        <button type="submit" name="delete_review_id" style="margin-top: 16px; background-color: red; color: white;">리뷰 삭제</button>
+    </form>
 
         <!-- 댓글 섹션 -->
         <h1>댓글</h1>
@@ -244,7 +311,7 @@ $conn->close();
 
             <!-- 댓글 표 -->
             <div>
-                <!--리뷰 표 규격-->
+                <!--리뷰 표 스타일-->
                 <table style="width: 1000px; border-collapse: collapse; border-radius: 0px; box-shadow: 0 0 0;">
                     <thead>
                         <tr style="background-color: #f2f2f2;">
@@ -293,6 +360,7 @@ $conn->close();
             </div>
         </div>
 
+        
         <script>
             // 삭제 확인 및 삭제 요청
             function confirmDelete(commentId) {
@@ -307,7 +375,9 @@ $conn->close();
         </div>
 
         <?php endif; ?>
-        <button type="button" style="margin-top: 16px; margin-bottom: 40px;" onclick="history.back();">뒤로가기</button>
-    </div>
+        <a href="reviews_board.php">
+            <button type="button" style="margin-top: 16px; margin-bottom: 40px;">뒤로가기</button>
+        </a>
+        </div>
 </body>
 </html>
