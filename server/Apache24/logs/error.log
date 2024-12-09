@@ -1092,7 +1092,8 @@ Starting the 'Apache2.4' service
 [Tue Dec 03 15:08:42.287251 2024] [mpm_winnt:notice] [pid 24028:tid 372] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
 [Tue Dec 03 15:08:42.287251 2024] [core:notice] [pid 24028:tid 372] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
 [Tue Dec 03 15:08:42.291289 2024] [mpm_winnt:notice] [pid 24028:tid 372] AH00418: Parent: Created child process 26152
-[Tue Dec 03 15:08:43.052250 2024] [mpm_winnt:notice] [pid 26152:tid 368] AH00354: Child: Starting 64 worker threads.
+Apache server shutdown initiated...
+pm_winnt:notice] [pid 26152:tid 368] AH00354: Child: Starting 64 worker threads.
 [Tue Dec 03 15:15:48.038578 2024] [php:error] [pid 26152:tid 1112] [client 127.0.0.1:16428] PHP Parse error:  Unclosed '{' on line 70 in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 123, referer: http://localhost:2787/add_review.php
 [Tue Dec 03 15:22:42.995298 2024] [php:error] [pid 26152:tid 1112] [client 127.0.0.1:16485] PHP Parse error:  syntax error, unexpected token "else" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 94, referer: http://localhost:2787/add_review.php
 [Tue Dec 03 15:22:53.629530 2024] [php:error] [pid 26152:tid 1116] [client 127.0.0.1:16486] PHP Parse error:  syntax error, unexpected token "else" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 94, referer: http://localhost:2787/add_review.php
@@ -1154,3 +1155,20 @@ Starting the 'Apache2.4' service
 [Tue Dec 03 17:14:26.329065 2024] [php:warn] [pid 26152:tid 1104] [client 127.0.0.1:17388] PHP Warning:  Trying to access array offset on null in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php on line 286, referer: http://localhost:2787/review_detail.php?id=2
 [Tue Dec 03 17:14:28.281078 2024] [php:warn] [pid 26152:tid 1104] [client 127.0.0.1:17388] PHP Warning:  Undefined variable $movie in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php on line 286, referer: http://localhost:2787/review_detail.php?id=2
 [Tue Dec 03 17:14:28.281078 2024] [php:warn] [pid 26152:tid 1104] [client 127.0.0.1:17388] PHP Warning:  Trying to access array offset on null in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php on line 286, referer: http://localhost:2787/review_detail.php?id=2
+[Tue Dec 03 17:20:25.221747 2024] [mpm_winnt:notice] [pid 24028:tid 372] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Tue Dec 03 17:20:27.246074 2024] [mpm_winnt:notice] [pid 26152:tid 368] AH00364: Child: All worker threads have exited.
+[Tue Dec 03 17:20:27.271091 2024] [mpm_winnt:notice] [pid 24028:tid 372] AH00430: Parent: Child process 26152 exited successfully.
+[Wed Dec 04 10:57:37.993701 2024] [mpm_winnt:notice] [pid 16528:tid 372] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Wed Dec 04 10:57:37.993701 2024] [mpm_winnt:notice] [pid 16528:tid 372] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Wed Dec 04 10:57:37.993701 2024] [core:notice] [pid 16528:tid 372] AH00094: Command line: 'httpd -d C:/movie_rating_website/server/Apache24'
+[Wed Dec 04 10:57:37.999166 2024] [mpm_winnt:notice] [pid 16528:tid 372] AH00418: Parent: Created child process 21208
+Apache server shutdown initiated...
+pm_winnt:notice] [pid 21208:tid 368] AH00354: Child: Starting 64 worker threads.
+[Thu Dec 05 16:50:14.520316 2024] [mpm_winnt:notice] [pid 16528:tid 372] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Thu Dec 05 16:50:16.533122 2024] [mpm_winnt:notice] [pid 21208:tid 368] AH00364: Child: All worker threads have exited.
+[Thu Dec 05 16:50:16.575874 2024] [mpm_winnt:notice] [pid 16528:tid 372] AH00430: Parent: Child process 21208 exited successfully.
+[Mon Dec 09 10:18:44.726630 2024] [mpm_winnt:notice] [pid 20316:tid 384] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Mon Dec 09 10:18:44.726630 2024] [mpm_winnt:notice] [pid 20316:tid 384] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Mon Dec 09 10:18:44.726630 2024] [core:notice] [pid 20316:tid 384] AH00094: Command line: 'httpd -d C:/movie_rating_website/server/Apache24'
+[Mon Dec 09 10:18:44.732378 2024] [mpm_winnt:notice] [pid 20316:tid 384] AH00418: Parent: Created child process 25936
+[Mon Dec 09 10:18:45.486463 2024] [mpm_winnt:notice] [pid 25936:tid 368] AH00354: Child: Starting 64 worker threads.
