@@ -3907,3 +3907,360 @@
 127.0.0.1 - - [09/Dec/2024:10:20:30 +0900] "GET / HTTP/1.1" 200 1363
 127.0.0.1 - - [09/Dec/2024:10:20:30 +0900] "GET /assets/css/style.css HTTP/1.1" 304 -
 127.0.0.1 - - [09/Dec/2024:10:20:30 +0900] "GET /favicon.ico HTTP/1.1" 404 196
+127.0.0.1 - - [09/Dec/2024:10:58:35 +0900] "GET /login.php HTTP/1.1" 200 943
+127.0.0.1 - - [09/Dec/2024:10:58:39 +0900] "POST /login.php HTTP/1.1" 302 -
+127.0.0.1 - - [09/Dec/2024:10:58:39 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:10:58:46 +0900] "GET /movie_list.php HTTP/1.1" 200 8667
+127.0.0.1 - - [09/Dec/2024:10:58:51 +0900] "GET /movie_detail.php?id=2 HTTP/1.1" 200 2668
+127.0.0.1 - - [09/Dec/2024:10:58:52 +0900] "GET /img/%EB%84%88%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%80%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpeg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Dec/2024:10:59:41 +0900] "GET /movie_list.php HTTP/1.1" 200 8667
+127.0.0.1 - - [09/Dec/2024:11:00:41 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:12:16:03 +0900] "GET /movie_list.php HTTP/1.1" 200 428
+127.0.0.1 - - [09/Dec/2024:12:16:54 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:12:17:04 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:12:40:37 +0900] "GET /reviews_board.php HTTP/1.1" 200 5268
+127.0.0.1 - - [09/Dec/2024:12:40:39 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:12:40:40 +0900] "GET /movie_list.php HTTP/1.1" 200 428
+127.0.0.1 - - [09/Dec/2024:12:40:46 +0900] "GET /movie_list.php HTTP/1.1" 200 9054
+127.0.0.1 - - [09/Dec/2024:12:40:51 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 531
+127.0.0.1 - - [09/Dec/2024:12:41:52 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:12:50:35 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 593
+127.0.0.1 - - [09/Dec/2024:12:51:35 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:12:51:35 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:12:59:27 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4252
+127.0.0.1 - - [09/Dec/2024:13:00:27 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:00:27 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:06:58 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4103
+127.0.0.1 - - [09/Dec/2024:13:07:11 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4099
+127.0.0.1 - - [09/Dec/2024:13:07:18 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4098
+127.0.0.1 - - [09/Dec/2024:13:08:18 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:09:20 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4108
+127.0.0.1 - - [09/Dec/2024:13:09:50 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4080
+127.0.0.1 - - [09/Dec/2024:13:10:20 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:11:22 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 3849
+127.0.0.1 - - [09/Dec/2024:13:11:24 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 3849
+127.0.0.1 - - [09/Dec/2024:13:11:28 +0900] "GET /movie_list.php?search_category=title&search_keyword=%5C HTTP/1.1" 200 3694
+127.0.0.1 - - [09/Dec/2024:13:11:31 +0900] "GET /movie_list.php?search_category=title&search_keyword= HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:11:33 +0900] "GET /movie_list.php?page=1&search= HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:11:36 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:13:11:37 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:12:22 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:12:22 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:15:43 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:44 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:49 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:50 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:50 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:51 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:13:15:52 +0900] "GET /movie_list.php HTTP/1.1" 200 3843
+127.0.0.1 - - [09/Dec/2024:13:15:55 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 3849
+127.0.0.1 - - [09/Dec/2024:13:15:57 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 3859
+127.0.0.1 - - [09/Dec/2024:13:16:43 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:17:06 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 9036
+127.0.0.1 - - [09/Dec/2024:13:17:09 +0900] "GET /movie_list.php?search=title_director&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4410
+127.0.0.1 - - [09/Dec/2024:13:17:15 +0900] "GET /movie_list.php?search=director&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4410
+127.0.0.1 - - [09/Dec/2024:13:17:21 +0900] "GET /movie_list.php?search=director&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4410
+127.0.0.1 - - [09/Dec/2024:13:18:21 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:19:34 +0900] "GET /movie_list.php?search=director&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 9048
+127.0.0.1 - - [09/Dec/2024:13:19:37 +0900] "GET /movie_list.php?search=title&search= HTTP/1.1" 200 9036
+127.0.0.1 - - [09/Dec/2024:13:19:38 +0900] "GET /movie_list.php?search=title&search= HTTP/1.1" 200 9036
+127.0.0.1 - - [09/Dec/2024:13:20:28 +0900] "GET /movie_list.php?search=title&search= HTTP/1.1" 200 9034
+127.0.0.1 - - [09/Dec/2024:13:20:30 +0900] "GET /movie_list.php?search=title&search= HTTP/1.1" 200 9034
+127.0.0.1 - - [09/Dec/2024:13:20:33 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:13:20:34 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:13:20:35 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:20:37 +0900] "GET /movie_list.php?search=director_genre&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:13:20:39 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 9066
+127.0.0.1 - - [09/Dec/2024:13:20:41 +0900] "GET /movie_list.php?search=director_genre&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 9066
+127.0.0.1 - - [09/Dec/2024:13:20:41 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 9066
+127.0.0.1 - - [09/Dec/2024:13:20:47 +0900] "GET /movie_list.php?search=genre&search=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 9064
+127.0.0.1 - - [09/Dec/2024:13:21:40 +0900] "GET /movie_list.php?search=genre&search=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 545
+127.0.0.1 - - [09/Dec/2024:13:22:17 +0900] "GET /movie_list.php?search=genre&search=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:22:49 +0900] "GET /movie_list.php?search=genre&search=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:23:49 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:50:07 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:50:08 +0900] "GET /movie_list.php?search=director_genre&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:50:09 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:50:09 +0900] "GET /movie_list.php?search=director_genre&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:50:10 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:50:10 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:13:51:07 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:13:51:07 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:06:39 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 449
+127.0.0.1 - - [09/Dec/2024:14:06:48 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 432
+127.0.0.1 - - [09/Dec/2024:14:07:21 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 449
+127.0.0.1 - - [09/Dec/2024:14:08:21 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:17:14 +0900] "GET /movie_list.php?search=title_director&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:17:15 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:17:16 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:18:14 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:18:14 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:20:20 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 312
+127.0.0.1 - - [09/Dec/2024:14:21:20 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:21:20 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:21:56 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:21:57 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:21:58 +0900] "GET /movie_list.php?search=title&search=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 9052
+127.0.0.1 - - [09/Dec/2024:14:22:00 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 9046
+127.0.0.1 - - [09/Dec/2024:14:22:03 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 9066
+127.0.0.1 - - [09/Dec/2024:14:22:07 +0900] "GET /movie_list.php?search=title&search=%EB%8F%84%EB%91%91 HTTP/1.1" 200 9046
+127.0.0.1 - - [09/Dec/2024:14:22:08 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:14:22:09 +0900] "GET /movie_list.php HTTP/1.1" 200 9034
+127.0.0.1 - - [09/Dec/2024:14:22:11 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 9046
+127.0.0.1 - - [09/Dec/2024:14:22:56 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:22:56 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:23:59 +0900] "GET /movie_list.php?search=title&search=%EB%84%88%EC%9D%98 HTTP/1.1" 200 9124
+127.0.0.1 - - [09/Dec/2024:14:24:04 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4498
+127.0.0.1 - - [09/Dec/2024:14:24:47 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4502
+127.0.0.1 - - [09/Dec/2024:14:24:49 +0900] "GET /movie_list.php?search_category=title&search_keyword=%24searchKeyword HTTP/1.1" 200 3871
+127.0.0.1 - - [09/Dec/2024:14:24:52 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4502
+127.0.0.1 - - [09/Dec/2024:14:24:59 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:25:29 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4511
+127.0.0.1 - - [09/Dec/2024:14:25:55 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:26:03 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:26:04 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:26:04 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:27:03 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:28:17 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:28:17 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:28:18 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:28:20 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:28:21 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4486
+127.0.0.1 - - [09/Dec/2024:14:29:17 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:29:17 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:33:02 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4486
+127.0.0.1 - - [09/Dec/2024:14:33:03 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4486
+127.0.0.1 - - [09/Dec/2024:14:33:04 +0900] "GET /movie_list.php?search_category=&search_keyword= HTTP/1.1" 200 9118
+127.0.0.1 - - [09/Dec/2024:14:33:14 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:33:16 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%8F%84%EB%91%91 HTTP/1.1" 200 4477
+127.0.0.1 - - [09/Dec/2024:14:33:18 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%8F%84 HTTP/1.1" 200 4474
+127.0.0.1 - - [09/Dec/2024:14:33:20 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%95%8C HTTP/1.1" 200 4481
+127.0.0.1 - - [09/Dec/2024:14:33:23 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%AC%98 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:26 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%AC%98 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:26 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%AC%98 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:30 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:32 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5%EC%9E%AC%ED%98%84 HTTP/1.1" 200 4478
+127.0.0.1 - - [09/Dec/2024:14:33:36 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%9E%A5%EB%A5%B4 HTTP/1.1" 200 3870
+127.0.0.1 - - [09/Dec/2024:14:33:36 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5%EC%9E%AC%ED%98%84 HTTP/1.1" 200 4478
+127.0.0.1 - - [09/Dec/2024:14:33:36 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:37 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%AC%98 HTTP/1.1" 200 4472
+127.0.0.1 - - [09/Dec/2024:14:33:39 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EA%B3%B5%ED%8F%AC HTTP/1.1" 200 4475
+127.0.0.1 - - [09/Dec/2024:14:33:43 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%BD%94%EB%AF%B8%EB%94%94 HTTP/1.1" 200 3873
+127.0.0.1 - - [09/Dec/2024:14:33:45 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:33:48 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%A1%9C%EB%A7%A8%EC%8A%A4 HTTP/1.1" 200 4496
+127.0.0.1 - - [09/Dec/2024:14:33:51 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:33:54 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:33:56 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4495
+127.0.0.1 - - [09/Dec/2024:14:33:57 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:00 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:00 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:02 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:34:07 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 4497
+127.0.0.1 - - [09/Dec/2024:14:34:08 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:08 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:08 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4503
+127.0.0.1 - - [09/Dec/2024:14:34:13 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 4504
+127.0.0.1 - - [09/Dec/2024:14:34:14 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 4504
+127.0.0.1 - - [09/Dec/2024:14:34:14 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 4504
+127.0.0.1 - - [09/Dec/2024:14:34:16 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%ED%8C%8C%EB%AC%98 HTTP/1.1" 200 4475
+127.0.0.1 - - [09/Dec/2024:14:34:20 +0900] "GET /movie_list.php?search_category=&search_keyword=%ED%8C%8C%EB%AC%98 HTTP/1.1" 200 4467
+127.0.0.1 - - [09/Dec/2024:14:34:24 +0900] "GET /movie_list.php?search_category=genre&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:34:36 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%B5%9C%EB%8F%99%ED%9B%88 HTTP/1.1" 200 4480
+127.0.0.1 - - [09/Dec/2024:14:34:38 +0900] "GET /movie_list.php?search_category=genre&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:34:41 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%85%94%EC%A0%A4 HTTP/1.1" 200 4493
+127.0.0.1 - - [09/Dec/2024:14:34:42 +0900] "GET /movie_list.php?search_category=genre&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:34:52 +0900] "GET /movie_detail.php?id=2 HTTP/1.1" 200 2668
+127.0.0.1 - - [09/Dec/2024:14:34:53 +0900] "GET /movie_list.php?search_category=genre&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:34:55 +0900] "GET /movie_detail.php?id=10 HTTP/1.1" 200 2687
+127.0.0.1 - - [09/Dec/2024:14:34:55 +0900] "GET /img/%ED%8C%8C%EB%AC%98%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpeg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Dec/2024:14:34:58 +0900] "GET /movie_list.php?search_category=genre&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:35:11 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4494
+127.0.0.1 - - [09/Dec/2024:14:35:14 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9126
+127.0.0.1 - - [09/Dec/2024:14:36:11 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:39:30 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:39:38 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 572
+127.0.0.1 - - [09/Dec/2024:14:40:30 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:41:30 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 496
+127.0.0.1 - - [09/Dec/2024:14:42:30 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:42:30 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:42:37 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 4254
+127.0.0.1 - - [09/Dec/2024:14:42:41 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:42:42 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:42:45 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98+%EC%9D%B4%EB%A6%84%EC%9D%80 HTTP/1.1" 200 4735
+127.0.0.1 - - [09/Dec/2024:14:42:50 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:43:37 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:44:04 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:44:07 +0900] "GET /movie_list.php?search_category=title&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:44:11 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:44:13 +0900] "GET /movie_list.php?search_category=title&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:45:04 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:45:04 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:45:59 +0900] "GET /movie_list.php?search_category=title&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:46:00 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4725
+127.0.0.1 - - [09/Dec/2024:14:46:03 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:46:05 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4251
+127.0.0.1 - - [09/Dec/2024:14:46:09 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98 HTTP/1.1" 200 4734
+127.0.0.1 - - [09/Dec/2024:14:46:12 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EC%95%A0%EB%8B%88 HTTP/1.1" 200 4725
+127.0.0.1 - - [09/Dec/2024:14:46:14 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EA%B3%B5 HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:46:18 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EA%B3%B5 HTTP/1.1" 200 4248
+127.0.0.1 - - [09/Dec/2024:14:46:20 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98%27 HTTP/1.1" 200 4107
+127.0.0.1 - - [09/Dec/2024:14:46:22 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4725
+127.0.0.1 - - [09/Dec/2024:14:46:28 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EB%A7%88%EC%BD%94%ED%86%A0 HTTP/1.1" 200 4728
+127.0.0.1 - - [09/Dec/2024:14:46:31 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EA%B9%80 HTTP/1.1" 200 4702
+127.0.0.1 - - [09/Dec/2024:14:46:34 +0900] "GET /movie_list.php?search_category=title_director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:46:37 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EC%B5%9C HTTP/1.1" 200 4705
+127.0.0.1 - - [09/Dec/2024:14:46:39 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:46:59 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:14:47:04 +0900] "GET /movie_list.php?search_category=title_genre&search_keyword=%E3%85%8D%ED%98%B8 HTTP/1.1" 200 4101
+127.0.0.1 - - [09/Dec/2024:14:47:04 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:47:04 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%EC%B5%9C HTTP/1.1" 200 4705
+127.0.0.1 - - [09/Dec/2024:14:47:04 +0900] "GET /movie_list.php?search_category=title_director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:47:06 +0900] "GET /movie_list.php?search_category=title_director&search_keyword=%ED%8F%AC HTTP/1.1" 200 4248
+127.0.0.1 - - [09/Dec/2024:14:47:09 +0900] "GET /movie_list.php?search_category=title_genre&search_keyword=%ED%8F%AC HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:47:12 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%ED%8F%AC HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:47:14 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%AC%98 HTTP/1.1" 200 4248
+127.0.0.1 - - [09/Dec/2024:14:47:16 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:14:47:23 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EC%97%AD HTTP/1.1" 200 4702
+127.0.0.1 - - [09/Dec/2024:14:47:24 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:14:48:04 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:14:01 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword= HTTP/1.1" 200 9510
+127.0.0.1 - - [09/Dec/2024:15:15:01 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:15:01 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:17:06 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:17:16 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%A6%AC%EC%B9%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:18:07 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:18:49 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%A6%AC%EC%B9%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:18:56 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword= HTTP/1.1" 200 9510
+127.0.0.1 - - [09/Dec/2024:15:18:58 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword= HTTP/1.1" 200 9510
+127.0.0.1 - - [09/Dec/2024:15:19:00 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:15:19:01 +0900] "GET /movie_list.php HTTP/1.1" 200 9502
+127.0.0.1 - - [09/Dec/2024:15:19:04 +0900] "GET /movie_list.php?search_category=&search_keyword=%EA%B0%80%EC%9D%B4+%EB%A6%AC%EC%B9%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:19:49 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:22:58 +0900] "GET /movie_list.php?search_category=&search_keyword=%EA%B0%80%EC%9D%B4+%EB%A6%AC%EC%B9%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:23:58 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:23:58 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:24:25 +0900] "GET /movie_list.php?search_category=&search_keyword=%EA%B0%80%EC%9D%B4+%EB%A6%AC%EC%B9%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:24:27 +0900] "GET /movie_list.php HTTP/1.1" 200 9502
+127.0.0.1 - - [09/Dec/2024:15:24:27 +0900] "GET /dashboard.php HTTP/1.1" 200 1114
+127.0.0.1 - - [09/Dec/2024:15:24:28 +0900] "GET /movie_list.php HTTP/1.1" 200 9502
+127.0.0.1 - - [09/Dec/2024:15:24:58 +0900] "GET /movie_list.php HTTP/1.1" 200 9349
+127.0.0.1 - - [09/Dec/2024:15:25:02 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98%5C HTTP/1.1" 200 4102
+127.0.0.1 - - [09/Dec/2024:15:25:04 +0900] "GET /movie_list.php?search_category=director&search_keyword=%27 HTTP/1.1" 200 4096
+127.0.0.1 - - [09/Dec/2024:15:25:09 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EA%B2%80 HTTP/1.1" 200 4098
+127.0.0.1 - - [09/Dec/2024:15:25:11 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%8B%A0 HTTP/1.1" 200 4722
+127.0.0.1 - - [09/Dec/2024:15:25:14 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 4703
+127.0.0.1 - - [09/Dec/2024:15:25:26 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:28:13 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%9E%A5 HTTP/1.1" 200 468
+127.0.0.1 - - [09/Dec/2024:15:28:16 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EC%8B%A0 HTTP/1.1" 200 468
+127.0.0.1 - - [09/Dec/2024:15:28:17 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EA%B2%80 HTTP/1.1" 200 468
+127.0.0.1 - - [09/Dec/2024:15:28:18 +0900] "GET /movie_list.php?search_category=director&search_keyword=%27 HTTP/1.1" 200 457
+127.0.0.1 - - [09/Dec/2024:15:28:25 +0900] "GET /movie_list.php?search_category=director&search_keyword=%27 HTTP/1.1" 200 4096
+127.0.0.1 - - [09/Dec/2024:15:28:26 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:29:13 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:35:24 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:35:26 +0900] "GET /movie_list.php?search_category=&search_keyword= HTTP/1.1" 200 9349
+127.0.0.1 - - [09/Dec/2024:15:35:28 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:36:24 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:36:24 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:38:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 405
+127.0.0.1 - - [09/Dec/2024:15:39:12 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:39:12 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:40:40 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 516
+127.0.0.1 - - [09/Dec/2024:15:41:21 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 516
+127.0.0.1 - - [09/Dec/2024:15:41:40 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:44:10 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:44:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:44:48 +0900] "GET /movie_list.php?search_category=&search_keyword= HTTP/1.1" 200 9349
+127.0.0.1 - - [09/Dec/2024:15:44:49 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:45:11 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:46:38 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:46:38 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:47:38 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:47:38 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:15:49:07 +0900] "GET /movie_list.php?search_category=&search_keyword=%EC%8B%A0%EC%B9%B4%EC%9D%B4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:49:09 +0900] "GET /movie_list.php?search_category=&search_keyword= HTTP/1.1" 200 9349
+127.0.0.1 - - [09/Dec/2024:15:49:09 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:49:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:49:29 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:49:31 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:49:32 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:49:34 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:49:59 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:50:00 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:15:50:03 +0900] "GET /movie_list.php?search_category=director&search_keyword= HTTP/1.1" 200 9357
+127.0.0.1 - - [09/Dec/2024:15:50:59 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:17:06 +0900] "GET / HTTP/1.1" 200 1363
+127.0.0.1 - - [09/Dec/2024:16:17:06 +0900] "GET /assets/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [09/Dec/2024:16:17:06 +0900] "GET /favicon.ico HTTP/1.1" 404 196
+127.0.0.1 - - [09/Dec/2024:16:18:06 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:45:02 +0900] "GET / HTTP/1.1" 200 1363
+127.0.0.1 - - [09/Dec/2024:16:45:03 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:45:05 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:45:06 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:45:24 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:45:27 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:46:02 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:46:59 +0900] "GET /movie_detail.php?id=2 HTTP/1.1" 200 2668
+127.0.0.1 - - [09/Dec/2024:16:47:00 +0900] "GET /img/%EB%84%88%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%80%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpeg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Dec/2024:16:47:01 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:47:02 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:47:04 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:16:47:05 +0900] "GET /movie_list.php?search_category=genre&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:47:07 +0900] "GET /movie_list.php?search_category=director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:47:09 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:47:10 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:47:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:47:15 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:47:17 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:47:19 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:47:21 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:48:00 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:48:00 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:48:07 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:48:09 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:48:26 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:48:27 +0900] "GET /movie_list.php?search_category=genre_director&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4253
+127.0.0.1 - - [09/Dec/2024:16:48:29 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:48:31 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:48:34 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:48:58 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:48:58 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:48:59 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:49:02 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EC%9D%B4%EB%A6%84 HTTP/1.1" 200 4727
+127.0.0.1 - - [09/Dec/2024:16:49:06 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:49:10 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:49:12 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:49:13 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:49:42 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:50:42 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:51:09 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:51:11 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:51:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:51:18 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:52:09 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:52:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:16:53:12 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:53:12 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:54:40 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:16:55:40 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:16:55:40 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:17:18:11 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:17:18:13 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:18:59 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:02 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%93%A4 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:17:19:04 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:04 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:05 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:05 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:05 +0900] "GET /movie_list.php?search_category=title&search_keyword=%EB%93%A4 HTTP/1.1" 200 4707
+127.0.0.1 - - [09/Dec/2024:17:19:06 +0900] "GET /index.php HTTP/1.1" 200 1363
+127.0.0.1 - - [09/Dec/2024:17:19:07 +0900] "GET /reviews_board.php HTTP/1.1" 200 5270
+127.0.0.1 - - [09/Dec/2024:17:19:08 +0900] "GET /index.php HTTP/1.1" 200 1363
+127.0.0.1 - - [09/Dec/2024:17:19:09 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:17:19:11 +0900] "-" 408 -
+127.0.0.1 - - [09/Dec/2024:17:19:12 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:17:19:23 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:17:20:03 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:17:20:04 +0900] "GET /movie_list.php HTTP/1.1" 200 9351
+127.0.0.1 - - [09/Dec/2024:17:20:15 +0900] "GET /movie_list.php?search_category=&search_keyword=%EB%84%88%EC%9D%98 HTTP/1.1" 200 408
+127.0.0.1 - - [09/Dec/2024:17:21:15 +0900] "-" 408 -
