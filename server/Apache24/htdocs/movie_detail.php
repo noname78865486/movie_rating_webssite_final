@@ -1,7 +1,11 @@
 <?php
 require_once 'config/db.php';
+session_start();
 
 $id = $_GET['id'];
+
+// 세션에서 로그인된 사용자 역할 확인
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 
 // 영화 정보 가져오기
 $sql = "SELECT * FROM movies WHERE id = ?";
@@ -17,8 +21,7 @@ if ($result->num_rows === 1) {
 }
 
 // 영화 삭제 처리
-if (isset($_POST['delete'])) {
-    // DELETE 쿼리 실행 전에 연결을 닫지 않음
+if ($isAdmin && isset($_POST['delete'])) {
     $deleteSql = "DELETE FROM movies WHERE id = ?";
     $deleteStmt = $conn->prepare($deleteSql);
     $deleteStmt->bind_param('i', $id);
@@ -31,9 +34,10 @@ if (isset($_POST['delete'])) {
     }
 }
 
-// 연결 종료는 삭제 처리 후에 하도록 수정
+// 연결 종료
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -103,18 +107,22 @@ $conn->close();
             </p>
         </div> 
 
-        <!-- 영화 수정 버튼 -->
-        <a href="edit_movie.php?id=<?= $movie['id'] ?>">
+        <!-- role이 admin인 경우 영화 수정, 삭제 가능 -->
+        <?php if ($isAdmin): ?>
+            <!-- 영화 수정 버튼 -->
+            <a href="edit_movie.php?id=<?= $movie['id'] ?>">
             <button type="button" style="margin-top: 16px;">영화 수정</button>
-        </a>
+            </a>
 
-        <!-- 영화 삭제 버튼 -->
-        <form method="POST" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+            <!-- 영화 삭제 버튼 -->
+            <form method="POST" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
             <button type="submit" name="delete" style="margin-top: 16px; background-color: red; color: white;">영화 삭제</button>
-        </form>
+            </form>
+        <?php endif; ?>
 
         <!-- 뒤로가기 버튼 -->
-        <button type="button" style="margin-top: 16px; margin-bottom: 60px;" onclick="history.back();">뒤로가기<br></button>
+        <button type="button" style="margin-top: 16px; margin-bottom: 60px;" onclick="history.back();">뒤로가기</button>
+
     </div>
 </body>
 </html>

@@ -5,7 +5,7 @@ CREATE TABLE reviews (
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     rating FLOAT NOT NULL,
-    visibility ENUM('공개', '비공개') DEFAULT '비공개',
+    visibility ENUM('공개', '비공개') DEFAULT '공개',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     file_path VARCHAR(255),
     FOREIGN KEY (rating_user_idNum) REFERENCES users(id) ON DELETE CASCADE,
