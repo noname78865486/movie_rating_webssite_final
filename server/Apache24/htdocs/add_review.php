@@ -80,3 +80,5 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
         <!-- 제출 버튼 -->
         <button type="submit" style="margin-top: 16px;">저장</button>
     </form>
+</body>
+</html>    

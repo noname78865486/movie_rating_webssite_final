@@ -4,8 +4,10 @@ session_start();
 
 $id = $_GET['id'];
 
-// 세션에서 로그인된 사용자 역할 확인
-$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+// 디버깅: 세션 값 확인
+if (!isset($_SESSION['role'])) {
+    die("세션이 설정되지 않았습니다. 관리자 권한이 필요합니다.");
+}
 
 // 영화 정보 가져오기
 $sql = "SELECT * FROM movies WHERE id = ?";
@@ -38,7 +40,6 @@ if ($isAdmin && isset($_POST['delete'])) {
 $conn->close();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -47,6 +48,11 @@ $conn->close();
     <link rel="stylesheet" href="assets/css/style.css">
     <title>영화 상세 정보</title>
     <style>
+        a {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+        }
         body {
             line-height: 1.6;
             margin: 20px;
@@ -109,15 +115,18 @@ $conn->close();
 
         <!-- role이 admin인 경우 영화 수정, 삭제 가능 -->
         <?php if ($isAdmin): ?>
-            <!-- 영화 수정 버튼 -->
-            <a href="edit_movie.php?id=<?= $movie['id'] ?>">
-            <button type="button" style="margin-top: 16px;">영화 수정</button>
-            </a>
+            <!-- 영화 수정 및 삭제 버튼을 포함하는 컨테이너 -->
+            <div style="display: flex; gap: 10px; align-items: center; margin-top: 16px;">
+                <!-- 영화 수정 버튼 -->
+                <a href="edit_movie.php?id=<?= $movie['id'] ?>">
+                    <button type="button">영화 수정</button>
+                </a>
 
-            <!-- 영화 삭제 버튼 -->
-            <form method="POST" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
-            <button type="submit" name="delete" style="margin-top: 16px; background-color: red; color: white;">영화 삭제</button>
-            </form>
+                <!-- 영화 삭제 버튼 -->
+                <form method="POST" style="background-color: transparent;" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                    <button type="submit" name="delete" style="margin:0 0;">영화 삭제</button>
+                </form>
+            </div>
         <?php endif; ?>
 
         <!-- 뒤로가기 버튼 -->
