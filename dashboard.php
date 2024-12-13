@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
 <body class="content">
         <!-- 사용자 인사말 표시 -->
         <h1 style="color:#fff">안녕하세요,<br></h1>
-        <!-- XSS 공격에 취약: htmlspecialchars()를 제거 -->
+        <!-- htmlspecialchars()를 제거하여 XSS 공격에 취약 -->
         <h1 style="color:#fff"><?php echo $userID; ?>님!<br></h1>
         <hr style="width: 50%; margin: 10px auto; border: 1px solid #fff;">
         <p style="font-size: 15px;">

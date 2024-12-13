@@ -6,19 +6,19 @@ require_once 'config/db.php'; // DB 연결 설정 파일
 session_start();
 
 // 로그인 여부 확인
-$isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user_id']); // 세션에 user_id가 설정되어 있는지 확인
 
 // 검색 카테고리와 키워드 가져오기
-$searchCategory = $_GET['search_category'] ?? '';
-$searchKeyword = $_GET['search_keyword'] ?? '';
+$searchCategory = $_GET['search_category'] ?? ''; // GET 파라미터에서 검색 카테고리 가져오기 (기본값은 빈 문자열)
+$searchKeyword = $_GET['search_keyword'] ?? ''; // GET 파라미터에서 검색 키워드 가져오기 (기본값은 빈 문자열)
 
 // 페이지네이션 변수 설정
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // 현재 페이지
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // GET 파라미터에서 현재 페이지 번호 가져오기 (기본값은 1)
 $moviesPerPage = 10; // 한 페이지에 표시할 영화 수
 $offset = ($currentPage - 1) * $moviesPerPage; // 시작 위치 계산
 
 // SQL 쿼리 시작
-$sql = "SELECT id, title, director, release_date, genre, IFNULL(rating, 0) AS rating FROM movies";
+$sql = "SELECT id, title, director, release_date, genre, IFNULL(rating, 0) AS rating FROM movies"; // 기본 영화 목록 조회 쿼리
 
 // 매개변수 배열 초기화
 $params = [];
@@ -26,32 +26,32 @@ $types = '';
 
 // 검색어가 있을 경우 WHERE 조건 추가
 if ($searchKeyword) {
-    $searchKeyword = '%' . $searchKeyword . '%';
-    if ($searchCategory == 'title') {
+    $searchKeyword = '%' . $searchKeyword . '%'; // LIKE 조건에 사용할 검색어 패턴 생성
+    if ($searchCategory == 'title') { // 제목으로 검색
         $sql .= " WHERE title LIKE ?";
         $params = [$searchKeyword];
         $types = 's';
-    } elseif ($searchCategory == 'director') {
+    } elseif ($searchCategory == 'director') { // 감독으로 검색
         $sql .= " WHERE director LIKE ?";
         $params = [$searchKeyword];
         $types = 's';
-    } elseif ($searchCategory == 'genre') {
+    } elseif ($searchCategory == 'genre') { // 장르로 검색
         $sql .= " WHERE genre LIKE ?";
         $params = [$searchKeyword];
         $types = 's';
-    } elseif ($searchCategory == 'title_director') {
+    } elseif ($searchCategory == 'title_director') { // 제목 또는 감독으로 검색
         $sql .= " WHERE title LIKE ? OR director LIKE ?";
         $params = [$searchKeyword, $searchKeyword];
         $types = 'ss';
-    } elseif ($searchCategory == 'title_genre') {
+    } elseif ($searchCategory == 'title_genre') { // 제목 또는 장르로 검색
         $sql .= " WHERE title LIKE ? OR genre LIKE ?";
         $params = [$searchKeyword, $searchKeyword];
         $types = 'ss';
-    } elseif ($searchCategory == 'genre_director') {
+    } elseif ($searchCategory == 'genre_director') { // 장르 또는 감독으로 검색
         $sql .= " WHERE genre LIKE ? OR director LIKE ?";
         $params = [$searchKeyword, $searchKeyword];
         $types = 'ss';
-    } elseif ($searchCategory == 'total') {
+    } elseif ($searchCategory == 'total') { // 제목, 감독 또는 장르로 검색
         $sql .= " WHERE title LIKE ? OR director LIKE ? OR genre LIKE ?";
         $params = [$searchKeyword, $searchKeyword, $searchKeyword];
         $types = 'sss';
@@ -59,45 +59,45 @@ if ($searchKeyword) {
 }
 
 // 정렬 조건 추가
-$sql .= " ORDER BY id ASC";
+$sql .= " ORDER BY id ASC"; // ID를 기준으로 오름차순 정렬
 
 // 페이지네이션 추가
-$sql .= " LIMIT ? OFFSET ?";
+$sql .= " LIMIT ? OFFSET ?"; // 지정된 개수만큼 출력하고 시작 위치를 설정
 $params[] = $moviesPerPage;
 $params[] = $offset;
-$types .= 'ii';
+$types .= 'ii'; // LIMIT와 OFFSET에 대한 매개변수 타입
 
 // 쿼리 준비
 $stmt = $conn->prepare($sql);
 
 // 매개변수 바인딩
 if ($params) {
-    $stmt->bind_param($types, ...$params);
+    $stmt->bind_param($types, ...$params); // 매개변수 바인딩
 }
 
 // 쿼리 실행
 $stmt->execute();
 if (!$stmt) {
-    die("SQL Error: " . $conn->error);
+    die("SQL Error: " . $conn->error); // SQL 실행 실패 시 에러 출력
 }
 $result = $stmt->get_result();
 if (!$result) {
-    die("Query returned no results or failed.");
+    die("Query returned no results or failed."); // 결과 반환 실패 시 에러 출력
 }
 
 // 전체 영화 수 가져오기
-$totalCountSql = "SELECT COUNT(*) AS total_count FROM movies";
+$totalCountSql = "SELECT COUNT(*) AS total_count FROM movies"; // 총 영화 개수 조회 쿼리
 if ($searchKeyword) {
-    $totalCountSql .= " WHERE title LIKE ? OR director LIKE ? OR genre LIKE ?";
+    $totalCountSql .= " WHERE title LIKE ? OR director LIKE ? OR genre LIKE ?"; // 검색 조건이 있는 경우 WHERE 조건 추가
     $totalCountStmt = $conn->prepare($totalCountSql);
-    $totalCountStmt->bind_param('sss', $searchKeyword, $searchKeyword, $searchKeyword);
+    $totalCountStmt->bind_param('sss', $searchKeyword, $searchKeyword, $searchKeyword); // 검색어 바인딩
 } else {
     $totalCountStmt = $conn->prepare($totalCountSql);
 }
 $totalCountStmt->execute();
 $totalCountResult = $totalCountStmt->get_result();
 $totalCountRow = $totalCountResult->fetch_assoc();
-$totalCount = $totalCountRow['total_count'];
+$totalCount = $totalCountRow['total_count']; // 총 영화 개수
 $totalPages = ceil($totalCount / $moviesPerPage); // 전체 페이지 수 계산
 ?>
 

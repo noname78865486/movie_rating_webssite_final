@@ -17,14 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $identifNum = $_POST['identifNum1'] . '-' . $_POST['identifNum2'];
     $address = $_POST['address'];
     $phoneNumber = $_POST['phoneNumber1'] . '-' . $_POST['phoneNumber2'] . '-' . $_POST['phoneNumber3'];
-    $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
+    $password = !empty($_POST['password']) ? md5($_POST['password']) : null; // 비밀번호 암호화 (취약한 md5 사용)
 
     // 중복 확인 (Email, 주민등록번호, 연락처)
-    $sql = "SELECT * FROM users WHERE (email = ? OR identifNum = ? OR phoneNumber = ?) AND userID != ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $email, $identifNum, $phoneNumber, $userID);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // 사용자 입력값이 직접 쿼리에 삽입되어 SQL 인젝션에 취약함
+    $sql = "SELECT * FROM users WHERE (email = '$email' OR identifNum = '$identifNum' OR phoneNumber = '$phoneNumber') AND userID != '$userID'";
+    $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -43,23 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // 업데이트 SQL
     if ($password) {
-        $sql = "UPDATE users SET name = ?, email = ?, identifNum = ?, address = ?, phoneNumber = ?, password = ? WHERE userID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssss", $name, $email, $identifNum, $address, $phoneNumber, $password, $userID);
+        $sql = "UPDATE users SET name = '$name', email = '$email', identifNum = '$identifNum', address = '$address', phoneNumber = '$phoneNumber', password = '$password' WHERE userID = '$userID'";
     } else {
-        $sql = "UPDATE users SET name = ?, email = ?, identifNum = ?, address = ?, phoneNumber = ? WHERE userID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $name, $email, $identifNum, $address, $phoneNumber, $userID);
+        $sql = "UPDATE users SET name = '$name', email = '$email', identifNum = '$identifNum', address = '$address', phoneNumber = '$phoneNumber' WHERE userID = '$userID'";
     }
 
     // 업데이트 실행
-    if ($stmt->execute()) {
+    if ($conn->query($sql)) {
         echo '<script>alert("정보가 성공적으로 수정되었습니다."); window.location.href = "my_page.php";</script>';
     } else {
         echo '<script>alert("정보 수정에 실패했습니다. 다시 시도해주세요."); window.history.back();</script>';
     }
 
-    $stmt->close();
     $conn->close();
 } else {
     echo '<script>alert("잘못된 접근입니다."); window.history.back();</script>';
