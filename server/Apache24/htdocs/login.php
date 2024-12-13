@@ -24,6 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 결과에서 사용자 데이터 확인
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc(); // 결과를 연관 배열로 가져옴
+            
+            // 유저 비활성화 여부 확인
+            if ($row['role'] === '비활성화') {
+                echo "<script>alert('비활성화된 계정입니다. 관리자에게 문의하세요.'); window.location.href = 'login.php';</script>";
+                header("Location: login.php");
+                exit;
+            }
 
             // 입력된 비밀번호와 저장된 해시 비밀번호 비교
             if (password_verify($password, $row['password'])) {
@@ -34,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $row['id']; // 사용자 ID 저장
                 $_SESSION['userID'] = $userID; // 사용자 입력 ID 저장
                 $_SESSION['role'] = $row['role']; // 사용자 역할(role) 저장
+                $_SESSION['login_time'] = date('Y-m-d H:i:s'); // 로그인 시간 저장
 
                 // 로그인 성공 시 대시보드로 리다이렉트
                 header("Location: dashboard.php");

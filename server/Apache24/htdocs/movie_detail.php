@@ -9,6 +9,8 @@ if (!isset($_SESSION['role'])) {
     die("세션이 설정되지 않았습니다. 관리자 권한이 필요합니다.");
 }
 
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+
 // 영화 정보 가져오기
 $sql = "SELECT * FROM movies WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -77,6 +79,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body style="height:100%;">
     <!--컨텐츠 전체를 감싸는 박스-->
     <div class="container" style="margin:60px auto;">

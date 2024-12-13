@@ -6,6 +6,21 @@ session_start(); // 세션 시작
 $isLoggedIn = isset($_SESSION['userID']);
 $userID = $_SESSION['userID'] ?? ''; // 로그인한 사용자 ID
 
+// 로그인한 사용자 정보에서 id와 role 가져오기
+$sql = "SELECT id, role FROM users WHERE userID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('s', $userID);
+$stmt->execute();
+$userResult = $stmt->get_result();
+if ($userResult->num_rows > 0) {
+    $userData = $userResult->fetch_assoc();
+    $currentUserId = $userData['id']; // 로그인한 사용자의 id
+    $isAdmin = $userData['role'] === 'admin'; // admin 여부
+} else {
+    $currentUserId = null;
+    $isAdmin = false;
+}
+
 // 검색 카테고리와 키워드 처리
 $searchCategory = $_GET['category'] ?? ''; // 카테고리 (제목, 작성자, 영화제목)
 $searchKeyword = $_GET['search'] ?? ''; // 검색어
@@ -15,39 +30,38 @@ $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // 현재 페이�
 $moviesPerPage = 10; // 한 페이지에 표시할 영화 수
 $offset = ($currentPage - 1) * $moviesPerPage; // 시작 위치 계산
 
-// 기본 SQL 쿼리
+// 기본 SQL 쿼리 (visibility 조건 제거)
 $sql = "SELECT r.id, r.movie_id, m.title AS movie_title, m.poster_path,
                 r.rating_user_idNum, r.title AS review_title, r.content,
                 r.rating, r.visibility, r.created_at, r.file_path, u.userID  
         FROM reviews r
         JOIN users u ON r.rating_user_idNum = u.id
-        JOIN movies m ON r.movie_id = m.id
-        WHERE (r.visibility = '공개' OR r.rating_user_idNum = ?)";
+        JOIN movies m ON r.movie_id = m.id";
 
 // 매개변수 배열 초기화
-$params = [$userID];
-$paramTypes = 's'; // 기본 타입은 's' (userID)
+$params = [];
+$paramTypes = '';
 
 // 검색 조건 추가
 if (!empty($searchCategory) && !empty($searchKeyword)) {
     if ($searchCategory == '작성자') {
         // 작성자 검색 (users.userID로 검색)
-        $sql .= " AND u.userID LIKE ?";
+        $sql .= " WHERE u.userID LIKE ?";
         $params[] = '%' . $searchKeyword . '%';
         $paramTypes .= 's';
     } elseif ($searchCategory == '제목') {
         // 후기 제목 검색
-        $sql .= " AND r.title LIKE ?";
+        $sql .= " WHERE r.title LIKE ?";
         $params[] = '%' . $searchKeyword . '%';
         $paramTypes .= 's';
     } elseif ($searchCategory == '영화제목') {
         // 영화 제목 검색
-        $sql .= " AND m.title LIKE ?";
+        $sql .= " WHERE m.title LIKE ?";
         $params[] = '%' . $searchKeyword . '%';
         $paramTypes .= 's';
     } elseif ($searchCategory == '전체') {
         // 전체 컬럼 검색 (제목, 작성자, 영화제목)
-        $sql .= " AND (r.title LIKE ? OR u.userID LIKE ? OR m.title LIKE ?)";
+        $sql .= " WHERE (r.title LIKE ? OR u.userID LIKE ? OR m.title LIKE ?)";
         $params[] = '%' . $searchKeyword . '%';
         $params[] = '%' . $searchKeyword . '%';
         $params[] = '%' . $searchKeyword . '%';
@@ -65,7 +79,9 @@ $paramTypes .= 'ii';
 $stmt = $conn->prepare($sql);
 
 // 파라미터 바인딩
-$stmt->bind_param($paramTypes, ...$params);
+if (!empty($paramTypes)) {
+    $stmt->bind_param($paramTypes, ...$params);
+}
 
 // 쿼리 실행
 $stmt->execute();
@@ -74,16 +90,15 @@ $result = $stmt->get_result();
 // 총 게시물 수 계산 (페이지네이션을 위한)
 $totalSql = "SELECT COUNT(*) AS total FROM reviews r
              JOIN users u ON r.rating_user_idNum = u.id
-             JOIN movies m ON r.movie_id = m.id
-             WHERE (r.visibility = '공개' OR r.rating_user_idNum = ?)";
+             JOIN movies m ON r.movie_id = m.id";
 $totalStmt = $conn->prepare($totalSql);
-$totalStmt->bind_param('s', $userID);
 $totalStmt->execute();
 $totalResult = $totalStmt->get_result();
 $totalRow = $totalResult->fetch_assoc();
 $totalReviews = $totalRow['total']; // 총 리뷰 수
 $totalPages = ceil($totalReviews / $moviesPerPage); // 총 페이지 수
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -109,6 +124,13 @@ $totalPages = ceil($totalReviews / $moviesPerPage); // 총 페이지 수
         }
     </script>
     <style>
+        table th:nth-child(1), table td:nth-child(1) { width: 5%; } /* No.(ID) */
+        table th:nth-child(2), table td:nth-child(2) { width: 20%; } /* 영화제목 */
+        table th:nth-child(3), table td:nth-child(3) { width: 30%; } /* 후기제목 */
+        table th:nth-child(4), table td:nth-child(4) { width: 5%; } /* 평점 */
+        table th:nth-child(5), table td:nth-child(5) { width: 10%; } /* 작성자ID */
+        table th:nth-child(6), table td:nth-child(6) { width: 10%; } /* 작성시간 */
+        table th:nth-child(7), table td:nth-child(6) { width: 7%; } /* 상세보기 */
         table {
             width: 90%;
             border-collapse: collapse;
@@ -155,7 +177,17 @@ $totalPages = ceil($totalReviews / $moviesPerPage); // 총 페이지 수
             <a href="#" onclick="handleAddreview(<?= $isLoggedIn ? 'true' : 'false' ?>)">➕후기 추가</a>
         </nav>
     </header>
-
+    <!-- 로그인한 사용자 정보 표시 -->
+    <div class="user-info">
+    <p style="text-align: center;"><로그인정보></p>
+    <?php if ($isLoggedIn): ?>
+        <p><strong>ID:</strong> <?= $_SESSION['userID'] ?></p>
+        <p><strong>login at:</strong> <?= date('Y-m-d H:i:s') ?></p>
+        <a href="logout.php" style="text-align: center;">🔓 Logout</a>
+    <?php else: ?>
+        <p>로그인해주세요</p>
+        <?php endif; ?>
+    </div>
     <main>
         <!-- 검색 폼 -->
         <form method="get" action="" style="text-align: center; margin-bottom: 20px;">
@@ -172,24 +204,25 @@ $totalPages = ceil($totalReviews / $moviesPerPage); // 총 페이지 수
         <table>
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>영화제목</th>
-                    <th>후기제목</th>
-                    <th>평점</th>
-                    <th>작성자</th>
-                    <th>작성시간</th>
-                    <th>상세보기</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">No.</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">영화제목</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">후기제목</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">평점</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">작성자</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">작성시간</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">상세보기</th>
                 </tr>
             </thead>   
             <tbody>
                 <?php if ($result && $result->num_rows > 0) : ?>
+                    <?php $no = 1; ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
-                            <td><?= $row['id'] ?></td>
+                        <td><?= $no++ ?></td>
                             <td><?= htmlspecialchars($row['movie_title']) ?></td>
                             <td>
                                 <?php 
-                                if ($row['visibility'] == '비공개' && $row['rating_user_idNum'] != $userID) {
+                                if ($row['visibility'] === '비공개' && !$isAdmin && $row['rating_user_idNum'] !== $currentUserId) {
                                     echo '<span class="secret-post">비밀글입니다.</span>';
                                 } else {
                                     echo htmlspecialchars($row['review_title']);

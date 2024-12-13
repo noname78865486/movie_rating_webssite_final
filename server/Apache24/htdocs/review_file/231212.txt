@@ -1,0 +1,6 @@
+https://ddungkill.tistory.com/136
+fiddler와 burp suite 연동
+
+https://2-juhyun-2.tistory.com/460
+dirbuster 여는법 사용법(cmd-java)
+

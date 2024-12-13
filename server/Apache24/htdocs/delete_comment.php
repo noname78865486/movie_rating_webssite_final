@@ -34,3 +34,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // GET 요청 또는 잘못된 요청 차단
     die("잘못된 접근입니다.");
 }
+?>

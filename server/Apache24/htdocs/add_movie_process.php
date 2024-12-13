@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $director = $_POST['director'];
     $release_date = $_POST['release_date'];
     $genre = $_POST['genre'];
-    $rating = $_POST['rating'];
 
     // 포스터 업로드 처리
     $upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/img/';
@@ -40,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // 데이터베이스에 영화 데이터 삽입
-$sql = "INSERT INTO movies (title, director, release_date, genre, rating, poster_path)
-        VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO movies (title, director, release_date, genre, poster_path)
+        VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('ssssds', $title, $director, $release_date, $genre, $rating, $poster_path);
+$stmt->bind_param('sssss', $title, $director, $release_date, $genre, $poster_path);
 
 if ($stmt->execute()) {
     echo "영화가 성공적으로 등록되었습니다.";

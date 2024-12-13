@@ -5,28 +5,39 @@ require_once 'config/db.php';
 
 // 영화 평점 업데이트 함수 정의
 function updateMovieRating($conn, $movie_id) {
-    // 영화 평점 업데이트 쿼리
     $update_rating_sql = "UPDATE movies SET rating = (SELECT AVG(rating) FROM reviews WHERE movie_id = ?) WHERE id = ?";
     $update_stmt = $conn->prepare($update_rating_sql);
     $update_stmt->bind_param("ii", $movie_id, $movie_id);
 
     if (!$update_stmt->execute()) {
-        // 예외 처리: 로그 기록
         error_log("평점 업데이트 실패: " . $update_stmt->error);
         die("평점 업데이트 실패.");
     }
-    
 }
 
-// 폼에서 전달된 값 받기
-$title = $_POST['title'];
-$content = $_POST['content'];
-$visibility = $_POST['visibility'];
-$rating_user_idNum = $_SESSION['userID']; // 세션에 있는 userID
-$movie_id = (int)$_POST['movie_id']; // reviews 테이블에서 사용하는 변수명은 유지
-$rating = $_POST['rating']; // rating
+// POST 데이터 확인
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("잘못된 접근입니다.");
+}
 
-// 사용자의 userID에 해당하는 id 값 가져오기
+$title = $_POST['title'] ?? null;
+$content = $_POST['content'] ?? null;
+$visibility = $_POST['visibility'] ?? '공개';
+$movie_id = isset($_POST['movie_id']) ? (int)$_POST['movie_id'] : null;
+$rating = $_POST['rating'] ?? null;
+
+// 필수 데이터 확인
+if (empty($title) || empty($content) || empty($movie_id)) {
+    die("필수 입력값이 누락되었습니다.");
+}
+
+// 사용자 확인
+$rating_user_idNum = $_SESSION['userID'] ?? null;
+if (!$rating_user_idNum) {
+    die("로그인 상태가 아닙니다.");
+}
+
+// users 테이블에서 userID에 해당하는 id 값 가져오기
 $sql = "SELECT id FROM users WHERE userID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $rating_user_idNum);
@@ -34,41 +45,36 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($user_id); // users 테이블에서 가져온 id 값
+    $stmt->bind_result($user_id);
     $stmt->fetch();
-    $rating_user_idNum = (int)$user_id; // id 값으로 갱신 (int 타입으로 변환)
+    $rating_user_idNum = (int)$user_id;
 } else {
     die("사용자 정보를 찾을 수 없습니다.");
 }
-// prepare()로 생성된 prepared statement 객체 종료
 $stmt->close();
 
-// 업로드된 파일 존재할 경우 파일 업로드 처리
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // 파일 업로드 처리
-    $upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/review_file/';
-    $file_path = '';
-    
-    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $file_tmp_name = $_FILES['file']['tmp_name'];
-        $file_name = basename($_FILES['file']['name']);
-        $file_path = $upload_dir . $file_name;
+// 파일 업로드 처리
+$upload_dir = 'C:/movie_rating_website/server/Apache24/htdocs/review_file/';
+$file_path = '';
 
-        // 파일 저장
-        if (move_uploaded_file($file_tmp_name, $file_path)) {
-            $file_path = '/review_file/' . $file_name; // 상대 경로로 저장
-        } else {
-            die("파일 업로드 실패.");
-        }
+if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+    $file_tmp_name = $_FILES['file']['tmp_name'];
+    $file_name = basename($_FILES['file']['name']);
+    $file_path = $upload_dir . $file_name;
+
+    if (move_uploaded_file($file_tmp_name, $file_path)) {
+        $file_path = '/review_file/' . $file_name;
+    } else {
+        die("파일 업로드 실패.");
     }
 }
 
-// rating 값이 존재하지 않으면 0으로 입력
+// rating 기본값 설정
 if (is_null($rating)) {
-    $rating = 0; // 또는 적절한 기본값 설정
+    $rating = 0;
 }
 
-// 리뷰 데이터를 DB에 삽입
+// 리뷰 데이터 삽입
 $sql = "INSERT INTO reviews (movie_id, rating_user_idNum, title, content, rating, visibility, created_at, file_path) 
         VALUES (?, ?, ?, ?, ?, ?, NOW(), ?)";
 $stmt = $conn->prepare($sql);
@@ -76,20 +82,16 @@ if ($stmt === false) {
     die("SQL prepare() 실패: " . $conn->error);
 }
 
-// 바인딩된 파라미터와 그 값 확인
 $stmt->bind_param("iisssss", $movie_id, $rating_user_idNum, $title, $content, $rating, $visibility, $file_path);
 
-// 실행 여부 확인
 if (!$stmt->execute()) {
     die("쿼리 실행 실패: " . $stmt->error);
-} else {
-    echo "데이터 삽입 성공.";
 }
 
-// 영화 평점 업데이트 함수 호출
+// 영화 평점 업데이트
 updateMovieRating($conn, $movie_id);
 
-// 성공적으로 삽입 후 reviews_board.php로 리디렉션
+// 성공적으로 삽입 후 리디렉션
 header("Location: reviews_board.php?message=success");
 exit;
 ?>

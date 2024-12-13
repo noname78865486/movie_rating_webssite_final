@@ -125,6 +125,13 @@ $totalPages = ceil($totalCount / $moviesPerPage); // 전체 페이지 수 계산
         }
     </script>
     <style>
+        table th:nth-child(1), table td:nth-child(1) { width: 5%; } /* No.(ID) */
+        table th:nth-child(2), table td:nth-child(2) { width: 30%; } /* 제목 */
+        table th:nth-child(3), table td:nth-child(3) { width: 10%; } /* 감독 */
+        table th:nth-child(4), table td:nth-child(4) { width: 10%; } /* 개봉일 */
+        table th:nth-child(5), table td:nth-child(5) { width: 10%; } /* 장르 */
+        table th:nth-child(6), table td:nth-child(6) { width: 10%; } /* 평점 */
+        table th:nth-child(7), table td:nth-child(6) { width: 7%; } /* 상세보기 */
         table {
             width: 90%;
             border-collapse: collapse;
@@ -154,6 +161,17 @@ $totalPages = ceil($totalCount / $moviesPerPage); // 전체 페이지 수 계산
             <a href="#" onclick="handleAddmovie(<?= $isLoggedIn ? 'true' : 'false' ?>)">➕영화 추가</a>
         </nav>
     </header>
+    <!-- 로그인한 사용자 정보 표시 -->
+    <div class="user-info">
+    <p style="text-align: center;"><로그인정보></p>
+    <?php if ($isLoggedIn): ?>
+        <p><strong>ID:</strong> <?= $_SESSION['userID'] ?></p>
+        <p><strong>login at:</strong> <?= $_SESSION['login_time'] ?></p>
+        <a href="logout.php" style="text-align: center;">🔓 Logout</a>
+    <?php else: ?>
+        <p>로그인해주세요</p>
+        <?php endif; ?>
+    </div>
 
     <main>
         <form action="movie_list.php" method="get">
@@ -191,7 +209,7 @@ $totalPages = ceil($totalCount / $moviesPerPage); // 전체 페이지 수 계산
             </thead>
             <tbody>
                 <?php if ($result->num_rows > 0): ?>
-                    <?php $no = 1; ?>
+                    <?php $no = ($currentPage - 1) * $moviesPerPage + 1; // 현재 페이지에 따른 시작 번호 계산 ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
                             <td><?= $no++ ?></td>

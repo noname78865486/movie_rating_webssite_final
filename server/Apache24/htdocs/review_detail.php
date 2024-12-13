@@ -32,7 +32,7 @@ $sql = "SELECT r.id AS review_id, r.movie_id, m.title AS movie_title, m.poster_p
                u.userID 
         FROM reviews r
         JOIN users u ON r.rating_user_idNum = u.id
-        JOIN movies m ON r.movie_id = m.id
+        LEFT JOIN movies m ON r.movie_id = m.id -- LEFT JOIN을 사용하여 영화가 없더라도 리뷰는 가져옴
         WHERE r.id = ?"; // 특정 리뷰만 조회
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $id); // id를 바인딩
@@ -44,6 +44,9 @@ if ($result->num_rows > 0) {
 } else {
     die("후기를 찾을 수 없습니다.");
 }
+
+// 영화 제목이 조회되지 않을 경우 "삭제된 영화입니다." 설정
+$movieTitle = $reviews['movie_title'] ?? "삭제된 영화입니다.";
 
 // 작성자인지 확인
 $isAuthor = $reviews['rating_user_idNum'] === $rating_user_idNum;
@@ -77,10 +80,9 @@ $sql = "SELECT c.content, c.created_at, c.visibility, u.userID, c.user_id, c.id 
         FROM comments c
         JOIN users u ON c.user_id = u.id
         WHERE c.review_id = ?
-        AND (c.visibility = '공개' OR c.user_id = ? OR ? = ?)
         ORDER BY c.created_at DESC";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('iiii', $id, $rating_user_idNum, $rating_user_idNum, $reviews['rating_user_idNum']);
+$stmt->bind_param('i', $id); // 리뷰 ID를 바인딩
 $stmt->execute();
 $comments = $stmt->get_result();
 
@@ -117,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
 }
 
 // 리뷰 삭제 처리
-if ($isAdmin && isset($_POST['delete'])) {
+if (($isAdmin || $isAuthor) && isset($_POST['delete'])) {
     $deleteSql = "DELETE FROM reviews WHERE id = ?";
     $deleteStmt = $conn->prepare($deleteSql);
     $deleteStmt->bind_param('i', $id);
@@ -153,6 +155,11 @@ $conn->close();
         }
     </script>
     <style>
+        a {
+            margin: 20px auto;
+            padding: 20px;
+            width: 150px;
+        }
         body {
             height: 100%;
             width: 100%;
@@ -189,13 +196,15 @@ $conn->close();
 </head>
 <body>
     <div style="width: 600px; margin: 20px auto; padding: 20px;">
-        <!--비밀글 사용자 검증 : 비공개일 경우 작성자의 ID와 현재 접속한 유저의 ID를 비교하여 일치하는 경우에만 게시글 표출-->
-        <?php if ($reviews['visibility'] == '비공개' && $reviews['rating_user_idNum'] != $rating_user_idNum): ?>
+        <!-- 비밀글 사용자 검증 : 비공개일 경우 작성자의 ID와 현재 접속한 유저의 ID를 비교하거나 관리자인 경우에만 게시글 표출 -->
+        <?php if ($reviews['visibility'] == '비공개' && $reviews['rating_user_idNum'] != $rating_user_idNum && !$isAdmin): ?>
             <script>
                 alert('비밀글입니다.');
                 window.history.back(); // 이전 페이지로 돌아가기
             </script>
         <?php else: ?>
+            <!-- 게시글 내용 표출 -->
+        <?php endif; ?>
         
         <!--후기 제목-->
         <h1 style="color: white;"><?= $reviews['review_title'] ?></h1>
@@ -240,7 +249,6 @@ $conn->close();
                 <p style="color: #888;">첨부된 파일이 없습니다.</p>
             <?php endif; ?>
         </div>
-    </div>    
 
         <!-- role이 admin이거나 글쓴 사람인 경우 리뷰 수정, 삭제 가능 -->
         <?php if ($isAdmin || $isAuthor): ?>
@@ -256,7 +264,7 @@ $conn->close();
                 </form>
             </div>
         <?php endif; ?>
-
+    </div>
         <!-- 댓글 섹션 -->
         <h1>댓글</h1>
         <div style="width: 1200px; margin: 0 auto; margin-top: 40px;">
@@ -276,7 +284,7 @@ $conn->close();
 
             <!-- 댓글 표 -->
             <div>
-                <!--리뷰 표 스타일-->
+                <!--댓글 표 규격 및 양식-->
                 <table style="width: 1000px; border-collapse: collapse; border-radius: 0px; box-shadow: 0 0 0;">
                     <thead>
                         <tr style="background-color: #f2f2f2;">
@@ -287,26 +295,34 @@ $conn->close();
                             <th style="border: 1px solid #ddd; padding: 8px;">삭제</th>
                         </tr>
                     </thead>
-                    <!--리뷰 표 내용-->
+                    <!--댓글 표 내용-->
                     <tbody>
                         <?php if ($comments->num_rows > 0): ?> <!-- 댓글이 있을 경우 -->
                             <?php while ($comment = $comments->fetch_assoc()): ?>
                             <tr>
+                                <!--작성자 userID-->
                                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
                                     <?= htmlspecialchars($comment['userID']) ?>
                                 </td>
+                                <!--댓글 공개/비공개 여부-->
                                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
                                     <?= htmlspecialchars($comment['visibility']) ?>
                                 </td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">
-                                    <?= nl2br(htmlspecialchars($comment['content'])) ?>
+                                <!--댓글 내용. 비밀 댓글인 경우, admin, 게시글작성자, 댓글작성자 외에 조회 불가-->
+                                <td>
+                                    <?php if ($comment['visibility'] === '공개' || $isAdmin || $isAuthor || $comment['user_id'] === $rating_user_idNum): ?>
+                                        <?= htmlspecialchars($comment['content']) ?>
+                                    <?php else: ?>
+                                        <em>비밀 댓글입니다.</em>
+                                    <?php endif; ?>
                                 </td>
+                                <!--댓글 작성시간-->
                                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
                                     <?= $comment['created_at'] ?>
                                 </td>
                                 <!-- 댓글 삭제 버튼 -->
                                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center; vertical-align: middle;">
-                                    <?php if ($comment['user_id'] == $rating_user_idNum): ?>
+                                    <?php if ($isAdmin || $comment['user_id'] == $rating_user_idNum): ?>
                                         <form id="delete-comment-form-<?= $comment['comment_id'] ?>" method="POST" action="" style="margin: 0; padding: 0; width: 60px; background: #fff;">
                                             <input type="hidden" name="delete_comment_id" value="<?= $comment['comment_id'] ?>">
                                             <button type="button" onclick="confirmDelete(<?= $comment['comment_id'] ?>)" style="background-color: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">삭제</button>
@@ -334,10 +350,8 @@ $conn->close();
                 }
             }
         </script>
-        <?php endif; ?>
         <a href="reviews_board.php">
             <button type="button" style="margin-top: 16px; margin-bottom: 40px;">뒤로가기</button>
         </a>
-    
 </body>
 </html>
