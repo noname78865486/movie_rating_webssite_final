@@ -66,18 +66,19 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
                 </select>
             </div>
 
-            <!-- 이미지 업로드 -->
+            <!-- 파일 업로드 -->
             <div style="flex: 1;">
                 <label>파일 업로드:</label>
                 <input type="file" name="file"><br>
-            </div><br>
+            </div>
         </div>
 
-            <!-- 평점 추가 -->
-            <label>평점:</label>
+        <!-- 평점 추가 -->
+        <label>평점:</label>
             <input type="number" name="rating" min="0" max="10" step="0.5" required placeholder="0~10점 사이 0.5점 단위로 입력"><br>
-
         
         <!-- 제출 버튼 -->
         <button type="submit" style="margin-top: 16px;">저장</button>
     </form>
+</body>
+</html> 

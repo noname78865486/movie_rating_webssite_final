@@ -1,7 +1,15 @@
 <?php
 require_once 'config/db.php';
+session_start();
 
 $id = $_GET['id'];
+
+// 디버깅: 세션 값 확인
+if (!isset($_SESSION['role'])) {
+    die("세션이 설정되지 않았습니다. 관리자 권한이 필요합니다.");
+}
+
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 
 // 영화 정보 가져오기
 $sql = "SELECT * FROM movies WHERE id = ?";
@@ -17,8 +25,7 @@ if ($result->num_rows === 1) {
 }
 
 // 영화 삭제 처리
-if (isset($_POST['delete'])) {
-    // DELETE 쿼리 실행 전에 연결을 닫지 않음
+if ($isAdmin && isset($_POST['delete'])) {
     $deleteSql = "DELETE FROM movies WHERE id = ?";
     $deleteStmt = $conn->prepare($deleteSql);
     $deleteStmt->bind_param('i', $id);
@@ -31,7 +38,7 @@ if (isset($_POST['delete'])) {
     }
 }
 
-// 연결 종료는 삭제 처리 후에 하도록 수정
+// 연결 종료
 $conn->close();
 ?>
 
@@ -43,6 +50,11 @@ $conn->close();
     <link rel="stylesheet" href="assets/css/style.css">
     <title>영화 상세 정보</title>
     <style>
+        a {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+        }
         body {
             line-height: 1.6;
             margin: 20px;
@@ -67,6 +79,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body style="height:100%;">
     <!--컨텐츠 전체를 감싸는 박스-->
     <div class="container" style="margin:60px auto;">
@@ -103,18 +116,25 @@ $conn->close();
             </p>
         </div> 
 
-        <!-- 영화 수정 버튼 -->
-        <a href="edit_movie.php?id=<?= $movie['id'] ?>">
-            <button type="button" style="margin-top: 16px;">영화 수정</button>
-        </a>
+        <!-- role이 admin인 경우 영화 수정, 삭제 가능 -->
+        <?php if ($isAdmin): ?>
+            <!-- 영화 수정 및 삭제 버튼을 포함하는 컨테이너 -->
+            <div style="display: flex; gap: 10px; align-items: center; margin-top: 16px;">
+                <!-- 영화 수정 버튼 -->
+                <a href="edit_movie.php?id=<?= $movie['id'] ?>">
+                    <button type="button">영화 수정</button>
+                </a>
 
-        <!-- 영화 삭제 버튼 -->
-        <form method="POST" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
-            <button type="submit" name="delete" style="margin-top: 16px; background-color: red; color: white;">영화 삭제</button>
-        </form>
+                <!-- 영화 삭제 버튼 -->
+                <form method="POST" style="background-color: transparent;" action="" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                    <button type="submit" name="delete" style="margin:0 0;">영화 삭제</button>
+                </form>
+            </div>
+        <?php endif; ?>
 
         <!-- 뒤로가기 버튼 -->
-        <button type="button" style="margin-top: 16px; margin-bottom: 60px;" onclick="history.back();">뒤로가기<br></button>
+        <button type="button" style="margin-top: 16px; margin-bottom: 60px;" onclick="history.back();">뒤로가기</button>
+
     </div>
 </body>
 </html>

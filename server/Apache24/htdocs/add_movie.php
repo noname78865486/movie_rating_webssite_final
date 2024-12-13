@@ -53,10 +53,6 @@ $userID = $_SESSION['userID']; // 로그인한 유저의 ID를 세션에서 가�
             <option value="역사">역사</option>
             <option value="기타">기타</option>
         </select><br>
-
-        <!--<label>평점:</label>
-        <input type="number" name="rating" min="0" max="10" step="0.5" required placeholder="0~10점 사이 0.5점 단위로 입력"><br>
-        -->
         <button type="submit">등록</button>
     </form>
 </body>

@@ -85,3 +85,26 @@ h1 {margin-bottom: 10px;
     cursor: pointer;
 }
 #login_wrap .forgetpw a, #login_wrap .regist_btn a { color: red; }
+
+
+.user-info {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+.user-info a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.user-info a:hover {
+    text-decoration: underline;
+}
