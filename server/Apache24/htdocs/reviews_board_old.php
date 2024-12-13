@@ -16,8 +16,7 @@ $sql = "SELECT r.id, r.movie_id, m.title AS movie_title, m.poster_path,
         FROM reviews r
         JOIN users u ON r.rating_user_idNum = u.id
         JOIN movies m ON r.movie_id = m.id
-        WHERE r.visibility = 'public' 
-        OR r.rating_user_idNum = ? 
+        WHERE r.visibility = 'public' OR r.rating_user_idNum = ? 
         ORDER BY r.created_at DESC;";
 
 // 검색 조건 추가 (검색어가 있을 때)

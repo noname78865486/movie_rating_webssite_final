@@ -759,7 +759,8 @@ Apache server interrupted...
 [Thu Nov 28 18:56:58.101765 2024] [mpm_winnt:notice] [pid 21708:tid 364] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
 [Thu Nov 28 18:56:58.101765 2024] [core:notice] [pid 21708:tid 364] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
 [Thu Nov 28 18:56:58.109776 2024] [mpm_winnt:notice] [pid 21708:tid 364] AH00418: Parent: Created child process 1332
-[Thu Nov 28 18:56:59.492068 2024] [mpm_winnt:notice] [pid 1332:tid 380] AH00354: Child: Starting 64 worker threads.
+Apache server interrupted...
+024] [mpm_winnt:notice] [pid 1332:tid 380] AH00354: Child: Starting 64 worker threads.
 [Thu Nov 28 19:12:26.636499 2024] [php:warn] [pid 1332:tid 1108] [client 192.168.219.114:50388] PHP Warning:  Undefined variable $stmt in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 67, referer: http://192.168.219.114:2787/add_review.php
 [Thu Nov 28 19:12:26.637542 2024] [php:error] [pid 1332:tid 1108] [client 192.168.219.114:50388] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on null in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php:67\nStack trace:\n#0 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 67, referer: http://192.168.219.114:2787/add_review.php
 [Thu Nov 28 19:14:14.349709 2024] [php:error] [pid 1332:tid 1100] [client 192.168.219.114:50403] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`movie_rating_website`.`reviews`, CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`rating_user_id`) REFERENCES `users` (`userID`) ON DELETE CASCADE) in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php:73\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php(73): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 73, referer: http://192.168.219.114:2787/add_review.php
@@ -1052,3 +1053,41 @@ Apache server interrupted...
 [Sat Nov 30 14:45:48.524768 2024] [php:error] [pid 1332:tid 1100] [client 127.0.0.1:53425] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php:25\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php(25): mysqli_stmt->bind_param('ii', '4', 'test1')\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php on line 25, referer: http://localhost:2787/reviews_board.php
 [Sat Nov 30 14:48:28.591010 2024] [php:error] [pid 1332:tid 1124] [client 127.0.0.1:53532] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php:25\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php(25): mysqli_stmt->bind_param('ii', '3', 'test1')\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\review_detail.php on line 25, referer: http://localhost:2787/reviews_board.php
 [Sat Nov 30 15:01:07.883755 2024] [php:error] [pid 1332:tid 1124] [client 127.0.0.1:54064] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'visibility' at row 1 in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php:105\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php(105): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_review_process.php on line 105, referer: http://localhost:2787/add_review.php
+[Mon Dec 02 23:48:35.684406 2024] [mpm_winnt:notice] [pid 21708:tid 364] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+Apache server interrupted...
+Apache server interrupted...
+[Mon Dec 02 23:48:37.704558 2024] [mpm_winnt:notice] [pid 1332:tid 380] AH00364: Child: All worker threads have exited.
+[Mon Dec 02 23:48:37.846089 2024] [mpm_winnt:notice] [pid 21708:tid 364] AH00430: Parent: Child process 1332 exited successfully.
+[Mon Dec 02 23:48:42.969373 2024] [mpm_winnt:notice] [pid 27676:tid 380] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Mon Dec 02 23:48:42.969373 2024] [mpm_winnt:notice] [pid 27676:tid 380] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Mon Dec 02 23:48:42.969373 2024] [core:notice] [pid 27676:tid 380] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
+[Mon Dec 02 23:48:42.978477 2024] [mpm_winnt:notice] [pid 27676:tid 380] AH00418: Parent: Created child process 33456
+Apache server interrupted...
+024] [mpm_winnt:notice] [pid 33456:tid 384] AH00354: Child: Starting 64 worker threads.
+[Mon Dec 02 23:50:48.185857 2024] [mpm_winnt:notice] [pid 27676:tid 380] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+Apache server interrupted...
+[Mon Dec 02 23:50:50.203684 2024] [mpm_winnt:notice] [pid 33456:tid 384] AH00364: Child: All worker threads have exited.
+[Mon Dec 02 23:50:50.247689 2024] [mpm_winnt:notice] [pid 27676:tid 380] AH00430: Parent: Child process 33456 exited successfully.
+[Tue Dec 03 00:00:30.537008 2024] [mpm_winnt:notice] [pid 29620:tid 412] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Tue Dec 03 00:00:30.538008 2024] [mpm_winnt:notice] [pid 29620:tid 412] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Tue Dec 03 00:00:30.538008 2024] [core:notice] [pid 29620:tid 412] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
+[Tue Dec 03 00:00:30.553363 2024] [mpm_winnt:notice] [pid 29620:tid 412] AH00418: Parent: Created child process 24380
+[Tue Dec 03 00:00:32.227583 2024] [mpm_winnt:notice] [pid 24380:tid 444] AH00354: Child: Starting 64 worker threads.
+[Tue Dec 03 00:43:14.557264 2024] [core:warn] [pid 33508:tid 388] AH00098: pid file C:/movie_rating_website/server/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Dec 03 00:43:14.644973 2024] [mpm_winnt:notice] [pid 33508:tid 388] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Tue Dec 03 00:43:14.644973 2024] [mpm_winnt:notice] [pid 33508:tid 388] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Tue Dec 03 00:43:14.644973 2024] [core:notice] [pid 33508:tid 388] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
+[Tue Dec 03 00:43:14.666970 2024] [mpm_winnt:notice] [pid 33508:tid 388] AH00418: Parent: Created child process 32764
+[Tue Dec 03 00:43:16.301356 2024] [mpm_winnt:notice] [pid 32764:tid 420] AH00354: Child: Starting 64 worker threads.
+[Tue Dec 03 00:46:03.440669 2024] [mpm_winnt:notice] [pid 33508:tid 388] AH00428: Parent: child process 32764 exited with status 1073807364 -- Restarting.
+[Tue Dec 03 00:47:25.936196 2024] [core:warn] [pid 19364:tid 404] AH00098: pid file C:/movie_rating_website/server/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Dec 03 00:47:26.090597 2024] [mpm_winnt:notice] [pid 19364:tid 404] AH00455: Apache/2.4.62 (Win64) PHP/8.3.13 configured -- resuming normal operations
+[Tue Dec 03 00:47:26.090597 2024] [mpm_winnt:notice] [pid 19364:tid 404] AH00456: Apache Lounge VS17 Server built: Sep  4 2024 10:31:52
+[Tue Dec 03 00:47:26.090597 2024] [core:notice] [pid 19364:tid 404] AH00094: Command line: 'C:\\movie_rating_website\\server\\Apache24\\bin\\httpd.exe -d C:/movie_rating_website/server/Apache24'
+[Tue Dec 03 00:47:26.096596 2024] [mpm_winnt:notice] [pid 19364:tid 404] AH00418: Parent: Created child process 19152
+[Tue Dec 03 00:47:28.415927 2024] [mpm_winnt:notice] [pid 19152:tid 368] AH00354: Child: Starting 64 worker threads.
+[Tue Dec 03 21:20:04.289069 2024] [php:warn] [pid 19152:tid 1132] [client 115.143.171.95:55124] PHP Warning:  Undefined array key "rating" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 20, referer: http://182.224.193.231:2787/add_movie.php
+[Tue Dec 03 21:20:04.303054 2024] [php:error] [pid 19152:tid 1132] [client 115.143.171.95:55124] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'release_date' at row 1 in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php:48\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php(48): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 48, referer: http://182.224.193.231:2787/add_movie.php
+[Tue Dec 03 21:20:14.441652 2024] [php:warn] [pid 19152:tid 1132] [client 115.143.171.95:55131] PHP Warning:  Undefined array key "rating" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 20, referer: http://182.224.193.231:2787/add_movie.php
+[Tue Dec 03 21:20:14.453703 2024] [php:error] [pid 19152:tid 1132] [client 115.143.171.95:55131] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'release_date' at row 1 in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php:48\nStack trace:\n#0 C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php(48): mysqli_stmt->execute()\n#1 {main}\n  thrown in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 48, referer: http://182.224.193.231:2787/add_movie.php
+[Tue Dec 03 21:20:24.195780 2024] [php:warn] [pid 19152:tid 1132] [client 115.143.171.95:55132] PHP Warning:  Undefined array key "rating" in C:\\movie_rating_website\\server\\Apache24\\htdocs\\add_movie_process.php on line 20, referer: http://182.224.193.231:2787/add_movie.php
